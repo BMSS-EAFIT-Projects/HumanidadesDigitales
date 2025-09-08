@@ -1,0 +1,197 @@
+%========================================
+% Plantilla artículo - Humanidades Digitales / NLP
+% Compilar con: pdfLaTeX + BibTeX + pdfLaTeX + pdfLaTeX
+%========================================
+\documentclass[11pt,a4paper]{article}
+
+% --- Codificación y tipografía ---
+\usepackage[utf8]{inputenc}   % Si usas LuaLaTeX/XeLaTeX, quita inputenc y usa fontspec
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% --- Idioma ---
+\usepackage[spanish,es-tabla]{babel}  % "Tabla" en lugar de "Cuadro", etc.
+\usepackage{csquotes}
+
+% --- Diseño de página ---
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+%\onehalfspacing  % Activa si quieres interlineado 1.5
+
+% --- Matemáticas y figuras/tablas ---
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+
+% --- Hipervínculos y referencias cruzadas ---
+\usepackage[hidelinks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+% --- Citas/Bibliografía (estilo social sciences) ---
+\usepackage[round,authoryear]{natbib} % \citep, \citet
+\bibliographystyle{apalike}           % Elige: apalike / plainnat / chicago, etc.
+
+% --- Comandos útiles ---
+\newcommand{\keywords}[1]{\par\noindent\textbf{Palabras clave —} #1}
+\newcommand{\JEL}[1]{\par\noindent\textbf{Clasificación —} #1}
+
+% --- Metadatos ---
+\title{Ciencia y técnica en la esfera pública de Colombia: \\
+	Análisis del discurso en columnas de opinión con metodologías de humanidades digitales}
+
+\author{
+	Karen Melissa Gomez Montoya\\
+	Biviana Marcela Suárez Sierra\\
+	\small Universidad EAFIT, Medellín, Colombia\\
+	\small \texttt{tu-email@eafit.edu.co}
+}
+
+\date{\today}
+
+%========================================
+\begin{document}
+	\maketitle
+	
+	\begin{abstract}
+		Es labor de las humanidades y ciencias sociales entender cómo se utiliza el lenguaje y cómo este refleja y genera cambios en la sociedad, en particular, cómo circulan y se transforman los discursos científicos. Este trabajo integra metodologías de ciencias de datos aplicadas a las humanidades digitales para analizar el lugar que ocupan los discursos científicos y técnicos en la opinión pública colombiana. Con un corpus de $\sim$8{,}000 columnas (2018--2020), aplicamos un pipeline de PLN (tokenización, lematización), modelado de tópicos y análisis de coocurrencias, junto con una evaluación cualitativa contextual, para responder: (i) ¿cuáles son los usos del discurso científico en la esfera pública de Colombia?, y (ii) ¿cómo se valora socialmente dicho discurso?
+	\end{abstract}
+	
+	\keywords{Humanidades digitales; Análisis del discurso; Procesamiento del lenguaje natural; Opinión pública; Colombia}
+	%\JEL{(si aplica)}
+	
+	1. Introducción breve del hallazgo
+	
+	Contextualiza qué parte del objetivo aborda el hallazgo (ej. frecuencia de términos, tópicos emergentes, valoración discursiva).
+	
+	Usa un enunciado claro, tipo:
+	“En esta sección presentamos hallazgos preliminares sobre la frecuencia y los contextos en los que aparece el término ciencia en las columnas de opinión analizadas (2018–2020).”
+	
+	2. Evidencia cuantitativa
+	
+	Gráficos o tablas simples:
+	
+	Tendencias temporales (ej. apariciones de ciencia por mes/año).
+	
+	Distribución por medio o autor.
+	
+	Top 20 términos que coocurren con ciencia.
+	
+	Ejemplo de redacción:
+	“Entre 2018 y 2020, el término ciencia aparece en 2.340 columnas (29,2% del corpus). Su presencia es más recurrente en 2020, coincidiendo con la pandemia de COVID-19.”
+	
+	3. Evidencia cualitativa
+	
+	Fragmentos de columnas donde la palabra aparece con funciones diferentes (argumentativa, retórica, simbólica).
+	
+	Ejemplo:
+	“En algunos casos, ciencia se emplea como fuente de legitimidad (‘la ciencia demuestra que…’), mientras que en otros se usa con valor metafórico (‘la ciencia política de la corrupción’).”
+	
+	4. Conexión con la pregunta de investigación
+	
+	Relaciona el hallazgo con las preguntas planteadas en el resumen:
+	
+	¿Qué usos del discurso científico identificamos hasta ahora?
+	
+	¿Cómo se valora la ciencia en la esfera pública?
+	
+	Ejemplo:
+	“Estos hallazgos preliminares sugieren que la ciencia no solo se asocia a temas de salud y educación, sino que también funciona como metáfora en discusiones políticas, lo cual abre la pregunta sobre el grado en que la ciencia es apropiada simbólicamente en la opinión pública.”
+	
+	5. Visualización / síntesis
+	
+	Incluye una gráfica o tabla por hallazgo preliminar:
+	
+	Nube de palabras coocurrentes con ciencia.
+	
+	Gráfico de barras con los tópicos más frecuentes.
+	
+	Red semántica pequeña con actores y conceptos conectados.
+	
+	Ejemplo de redacción de un hallazgo preliminar:
+	
+	Hallazgo preliminar 1: Aparición y contextos del término ciencia
+	
+	Del total de 8.000 columnas analizadas, 2.340 (29,2%) incluyen al menos una mención explícita a ciencia. La frecuencia muestra un aumento pronunciado en 2020, en paralelo con la pandemia.
+	
+	En términos de coocurrencias, ciencia aparece asociada principalmente a salud, educación y tecnología. Sin embargo, también se emplea en contextos metafóricos vinculados a la política.
+	
+	Estos resultados preliminares sugieren que la ciencia cumple un doble papel en la esfera pública: como autoridad epistémica (ej. validación de argumentos) y como recurso retórico en debates no especializados.
+	
+	\section{Introducción}
+	Motiva el problema, contribuciones y preguntas de investigación. Sitúa el trabajo en la literatura de comunicación pública de la ciencia, estudios CTS/STS y humanidades digitales (\citealp{BIBkey1,BIBkey2}).
+	
+	\section{Corpus y contexto}
+	Describe fuentes (tres periódicos principales), rango temporal (2018--2020), criterios de inclusión/exclusión, metadatos (medio, autoría, fecha, URL). Discute representatividad y sesgos del corpus.
+	
+	\section{Metodología}
+	\subsection{Preprocesamiento (PLN)}
+	Limpieza, normalización, stopwords extendidas, lematización en español (spaCy/Stanza). 
+	Define ventanas de contexto para analizar usos de “ciencia”.
+	
+	\subsection{Modelado y análisis}
+	\begin{itemize}
+		\item \textbf{Coocurrencias y redes semánticas:} PMI/PPMI; grafos conceptos–actores.
+		\item \textbf{Tópicos:} BERTopic/NMF con validación por coherencia y revisión humana.
+		\item \textbf{Valoración/stance:} esquema de anotación (acuerdo interanotador), clasificador ligero (LogReg/SVM) o modelo BETO/roberta-es; métricas (F1, AUC).
+		\item \textbf{Dinámica temporal:} series mensuales y detección de puntos de cambio.
+	\end{itemize}
+	
+	\section{Resultados preliminares}
+	Resumen de hallazgos cuantitativos (frecuencias, tópicos, marcos) y cualitativos (funciones argumentativas, retóricas, simbólicas). 
+	Refiere a figuras y tablas: ver \cref{fig:freq,tab:coocs}.
+	
+%	\begin{figure}[ht]
+%		\centering
+%		\includegraphics[width=0.8\linewidth]{figs/frecuencia_ciencia_por_mes.pdf}
+%		\caption{Frecuencia mensual de menciones a \emph{ciencia} (2018--2020) por medio.}
+%		\label{fig:freq}
+%	\end{figure}
+	
+	\begin{table}[ht]
+		\centering
+		\caption{Top-15 coocurrencias de \emph{ciencia} (PPMI), normalizadas por 1{,}000 palabras.}
+		\label{tab:coocs}
+		\begin{tabular}{l S[table-format=1.3]}
+			\toprule
+			Término & {PPMI} \\
+			\midrule
+			salud & 2.341 \\
+			educación & 2.115 \\
+			tecnología & 1.982 \\
+			% ... completa con tus resultados
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\section{Discusión}
+	Interpreta los patrones: autoridad epistémica vs. recurso retórico; entrelazamientos con política/ética/educación. Conecta con literatura CTS/STS y comunicación pública de la ciencia.
+	
+	\section{Limitaciones y consideraciones éticas}
+	Cobertura mediática, sesgos de autoría/medio, ambigüedad semántica, cumplimiento de TOS/licencias, privacidad y reproducibilidad.
+	
+	\section{Reproducibilidad y datos}
+	Enlace a repositorio (GitHub/OSF/Zenodo), scripts, versión de paquetes y \emph{conteiner} (\texttt{Dockerfile}) si aplica. 
+	Describe estructura del repo y cómo reproducir figuras/tablas.
+	
+	\section{Conclusiones y trabajo futuro}
+	Síntesis de aportes y próximos pasos (ampliar periodos, añadir encuestas, enriquecer anotaciones, análisis multilingüe, etc.).
+	
+	\section*{Agradecimientos}
+	Reconocimientos a colaboradores, financiación, y fuentes de datos.
+	
+	% --- Bibliografía ---
+	\bibliography{references}  % Crea un archivo references.bib con tus entradas
+	
+	% --- Apéndices (opcional) ---
+	\appendix
+	\section{Guía mínima para citas y figuras}
+	Ejemplo de cita: \citep{BIBkey1}; cita narrativa: \citet{BIBkey2}.
+	Ecuación de ejemplo:
+	\begin{equation}
+	\text{PPMI}(w,c) = \max\left\{0, \log \frac{p(w,c)}{p(w)\,p(c)}\right\}.
+	\end{equation}
+	
+\end{document}
