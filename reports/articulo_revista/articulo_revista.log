@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  22 NOV 2025 19:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  24 NOV 2025 11:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -797,119 +797,150 @@ n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
 [2]
 
 [3]
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+
+ []
+
+
 
 [4]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 199.
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+
+ []
+
+
+
+[5{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
+:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
+:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-42.
- (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+32.
+
+(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 260--260
+Underfull \hbox (badness 10000) in paragraph at lines 250--250
 []|\T1/lmr/m/n/9 (+20) Administración de la
  []
 
-[5{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 316.
 
 
-[6{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
-:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C
-:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
-:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Overfull \hbox (71.04243pt too wide) in paragraph at lines 393--402
+[6{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+
+
+[7{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
+c}]
+Overfull \hbox (71.04243pt too wide) in paragraph at lines 403--412
  [][] 
  []
 
-
-
-[7]
-<figures/nube_palabras.png, id=236, 1011.78pt x 505.89pt>
+<figures/nube_palabras.png, id=240, 1011.78pt x 505.89pt>
 File: figures/nube_palabras.png Graphic file (type png)
 <use figures/nube_palabras.png>
-Package pdftex.def Info: figures/nube_palabras.png  used on input line 406.
+Package pdftex.def Info: figures/nube_palabras.png  used on input line 416.
 (pdftex.def)             Requested size: 407.66833pt x 203.8345pt.
-<figures/distribucion_scores.png, id=240, 578.16pt x 361.35pt>
+
+
+[8]
+<figures/distribucion_scores.png, id=250, 578.16pt x 361.35pt>
 File: figures/distribucion_scores.png Graphic file (type png)
 <use figures/distribucion_scores.png>
-Package pdftex.def Info: figures/distribucion_scores.png  used on input line 41
+Package pdftex.def Info: figures/distribucion_scores.png  used on input line 42
 9.
 (pdftex.def)             Requested size: 217.42265pt x 135.88637pt.
-<figures/accuracy_umbral.png, id=241, 578.16pt x 361.35pt>
+<figures/accuracy_umbral.png, id=251, 578.16pt x 361.35pt>
 File: figures/accuracy_umbral.png Graphic file (type png)
 <use figures/accuracy_umbral.png>
-Package pdftex.def Info: figures/accuracy_umbral.png  used on input line 426.
+Package pdftex.def Info: figures/accuracy_umbral.png  used on input line 436.
 (pdftex.def)             Requested size: 217.42265pt x 135.88637pt.
-
-
-[8 <./figures/nube_palabras.png> <./figures/distribucion_scores.png> <./figures
-/accuracy_umbral.png>]
 <figures/dist_cols_ciencia.png, id=252, 569.7285pt x 352.1958pt>
 File: figures/dist_cols_ciencia.png Graphic file (type png)
 <use figures/dist_cols_ciencia.png>
-Package pdftex.def Info: figures/dist_cols_ciencia.png  used on input line 446.
+Package pdftex.def Info: figures/dist_cols_ciencia.png  used on input line 456.
 
 (pdftex.def)             Requested size: 407.66833pt x 252.01155pt.
-<figures/porcentaje_mensual_ciencia.png, id=254, 1003.3485pt x 424.4658pt>
+
+
+[9 <./figures/nube_palabras.png> <./figures/distribucion_scores.png> <./figures
+/accuracy_umbral.png>]
+<figures/porcentaje_mensual_ciencia.png, id=263, 1003.3485pt x 424.4658pt>
 File: figures/porcentaje_mensual_ciencia.png Graphic file (type png)
 <use figures/porcentaje_mensual_ciencia.png>
 Package pdftex.def Info: figures/porcentaje_mensual_ciencia.png  used on input 
-line 456.
+line 466.
 (pdftex.def)             Requested size: 430.31812pt x 182.04391pt.
 
 
-[9 <./figures/dist_cols_ciencia.png>]
-<figures/autores_ciencia_comparativo.png, id=263, 714.7503pt x 424.2249pt>
+[10 <./figures/dist_cols_ciencia.png> <./figures/porcentaje_mensual_ciencia.png
+>]
+<figures/autores_ciencia_comparativo.png, id=274, 714.7503pt x 424.2249pt>
 File: figures/autores_ciencia_comparativo.png Graphic file (type png)
 <use figures/autores_ciencia_comparativo.png>
 Package pdftex.def Info: figures/autores_ciencia_comparativo.png  used on input
- line 466.
+ line 476.
 (pdftex.def)             Requested size: 430.31812pt x 255.41077pt.
-<figures/subcategorias_principales.png, id=264, 714.9912pt x 424.4658pt>
+<figures/subcategorias_principales.png, id=275, 714.9912pt x 424.4658pt>
 File: figures/subcategorias_principales.png Graphic file (type png)
 <use figures/subcategorias_principales.png>
 Package pdftex.def Info: figures/subcategorias_principales.png  used on input l
-ine 475.
+ine 485.
 (pdftex.def)             Requested size: 430.31812pt x 255.4716pt.
 
 
-[10 <./figures/porcentaje_mensual_ciencia.png> <./figures/autores_ciencia_compa
-rativo.png>]
-<figures/nube_ciencia_fragmentos.png, id=272, 699.0918pt x 429.7656pt>
+[11 <./figures/autores_ciencia_comparativo.png> <./figures/subcategorias_princi
+pales.png>]
+<figures/nube_ciencia_fragmentos.png, id=283, 699.0918pt x 429.7656pt>
 File: figures/nube_ciencia_fragmentos.png Graphic file (type png)
 <use figures/nube_ciencia_fragmentos.png>
 Package pdftex.def Info: figures/nube_ciencia_fragmentos.png  used on input lin
-e 486.
+e 496.
 (pdftex.def)             Requested size: 430.31812pt x 264.54362pt.
-
-
-[11 <./figures/subcategorias_principales.png> <./figures/nube_ciencia_fragmento
-s.png>] (tablas/tabla_frecuencias_columnas.tex)
-<figures/grafo_ciencia_2018.png, id=281, 722.7pt x 578.16pt>
+ (tablas/tabla_frecuencias_columnas.tex)
+<figures/grafo_ciencia_2018.png, id=284, 722.7pt x 578.16pt>
 File: figures/grafo_ciencia_2018.png Graphic file (type png)
 <use figures/grafo_ciencia_2018.png>
-Package pdftex.def Info: figures/grafo_ciencia_2018.png  used on input line 510
+Package pdftex.def Info: figures/grafo_ciencia_2018.png  used on input line 520
 .
 (pdftex.def)             Requested size: 144.95303pt x 115.95636pt.
-<figures/grafo_ciencia_2019.png, id=282, 722.7pt x 578.16pt>
+<figures/grafo_ciencia_2019.png, id=285, 722.7pt x 578.16pt>
 File: figures/grafo_ciencia_2019.png Graphic file (type png)
 <use figures/grafo_ciencia_2019.png>
-Package pdftex.def Info: figures/grafo_ciencia_2019.png  used on input line 517
+Package pdftex.def Info: figures/grafo_ciencia_2019.png  used on input line 527
 .
 (pdftex.def)             Requested size: 144.95303pt x 115.95636pt.
-<figures/grafo_ciencia_2020.png, id=283, 722.7pt x 578.16pt>
+<figures/grafo_ciencia_2020.png, id=286, 722.7pt x 578.16pt>
 File: figures/grafo_ciencia_2020.png Graphic file (type png)
 <use figures/grafo_ciencia_2020.png>
-Package pdftex.def Info: figures/grafo_ciencia_2020.png  used on input line 524
+Package pdftex.def Info: figures/grafo_ciencia_2020.png  used on input line 534
 .
 (pdftex.def)             Requested size: 144.95303pt x 115.95636pt.
 
 
-[12 <./figures/grafo_ciencia_2018.png> <./figures/grafo_ciencia_2019.png> <./fi
-gures/grafo_ciencia_2020.png>]
+[12 <./figures/nube_ciencia_fragmentos.png>]
 
 [13]
-Overfull \hbox (20.47116pt too wide) in paragraph at lines 614--616
+
+[14 <./figures/grafo_ciencia_2018.png> <./figures/grafo_ciencia_2019.png> <./fi
+gures/grafo_ciencia_2020.png>]
+Overfull \hbox (20.47116pt too wide) in paragraph at lines 624--626
 []\T1/lmr/m/n/10.95 (-20) Enlace a re-po-si-to-rio (GitHub/OSF/Zenodo), scripts
 , ver-sión de pa-que-tes y \T1/lmr/m/it/10.95 (-20) con-tei-ner \T1/lmr/m/n/10.
 95 (-20) (\T1/lmtt/m/n/10.95 Dockerfile\T1/lmr/m/n/10.95 (-20) )
@@ -917,9 +948,11 @@ Overfull \hbox (20.47116pt too wide) in paragraph at lines 614--616
 
 (articulo_revista.bbl
 
-[14])
+[15]
 
-[15] (articulo_revista.aux
+[16])
+
+[17] (articulo_revista.aux
 LaTeX Info: Redefining \. on input line 17.
 LaTeX Info: Redefining \% on input line 17.
 )
@@ -928,14 +961,14 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
  ***********
 Package rerunfilecheck Info: File `articulo_revista.out' has not changed.
-(rerunfilecheck)             Checksum: A23E0448F7E9154ED7360C3027D4821E;6929.
+(rerunfilecheck)             Checksum: 06697DC064B12FD78A2F2F3B3C59F964;5352.
  ) 
 Here is how much of TeX's memory you used:
- 22783 strings out of 469959
- 443318 string characters out of 5469834
- 846913 words of memory out of 5000000
- 49027 multiletter control sequences out of 15000+600000
- 705488 words of font info for 177 fonts, out of 8000000 for 9000
+ 22831 strings out of 469959
+ 444232 string characters out of 5469834
+ 845213 words of memory out of 5000000
+ 49053 multiletter control sequences out of 15000+600000
+ 706335 words of font info for 185 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,80p,1015b,1312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -952,9 +985,9 @@ sers/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Use
 rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Use
 rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Use
 rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on articulo_revista.pdf (15 pages, 7965959 bytes).
+Output written on articulo_revista.pdf (17 pages, 7978858 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 500000)
- 46400 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 89 named destinations out of 1000 (max. 500000)
+ 46352 words of extra memory for PDF output out of 51595 (max. 10000000)
 

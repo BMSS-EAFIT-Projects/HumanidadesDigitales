@@ -73,7 +73,7 @@
 	
 
 	\section{Introducción}
-		AUN PENDIENTE
+	 PENDIENTE TERMINAR
 	
 	\begin{enumerate}
 			
@@ -172,67 +172,57 @@
 	Todos estos análisis se llevaron a cabo en Python. 
 	
 	\subsection{Diagrama de flujo}
+	
+	Preprocesamiento básico -> Descriptivos textos -> Bertopic texto -> Fragmentar texto -> Búsqueda ciencia -> Análisis ciencia -> Descriptivos -> Bertopic -> Entidades
+	
 	\subsection{Recolección data}
 	???
-	Se recolectaron 13 mil columnas de opinión de tres periódicos colombianos de alta circulación. Estas fueron publicadas entre enero de 2018 y diciembre de 2020.  En esta fase el único filtro de selección fue que la columna fuera completamente texto y no incluyera video o audio necesario para entender su contenido.
+	Se recolectaron 13 mil columnas de opinión de tres periódicos colombianos de alta circulación. Estas fueron publicadas entre enero de 2018 y diciembre de 2020.  En esta fase el único filtro de selección fue que la columna fuera completamente texto y no incluyera video o audio necesario para entender su contenido. Las columnas no se seleccionaron por ningún tema en especifico.
+	
 	Para cada columna de opinión se recolectaron los siguientes metadatos: el nombre del periódico, el autor, la fecha, el título, el texto (cuerpo) de la columna y el vínculo. Se verificó que cada texto sea único (las columnas no se repiten) y se normalizaron los nombres de los autores. Luego de este proceso de asignaron números de identificación únicos para columna de opinión. 
 	
 	\subsection{Preprocesamiento}
 	
-	Limpieza
-	ii.	Tokens
-	iii.	Stopwords
-	iv.	Diferentes niveles de preprocesamiento (lematizado o no, chunks o no, sin stopwords o con stopwords)
+	Cuando se analiza texto, es necesario prepararlo y limpiarlo para llevarlo a un formato adecuado antes de aplicar los algoritmos de PLN \cite{Chai2022}. A esta etapa se le conoce como preprocesamiento del texto.  En esta investigación, primero se efectuó una limpieza en el texto de cada columna de opinión, eliminando las urls, los hashtags y las menciones a usuarios de redes sociales (@), así como espacios en blanco extra y caracteres distintos de letras, números y puntuación común. Luego se aplicaron diversas técnicas como tokenización, eliminación de stopwords y lematización según la necesidad de cada algoritmo de análisis. Estas técnicas se definen y explican a continuación. \\
 	
-	Cuando se analiza texto es necesario prepararlo y limpiarlo llevándolo al formato adecuado antes de aplicar los algoritmos de PLN [REF].
-	Primero, en el texto de cada columna de opinión, se eliminaron urls, hashtags y arrobas (menciones a usuarios de redes sociales), también espacios en blanco extra y caracteres diferentes a letras, números y puntuación común. 
+	La tokenización es el proceso mediante el cual un texto se divide en unidades más pequeñas llamadas tokens. Este paso permite transformar el texto no estructurado en un formato estructurado y, por tanto, susceptible de análisis \cite{Tyagi_text}. En este trabajo, la tokenización se realizó dividiendo el texto por espacios, es decir, segmentándolo en palabras. \\
 	
-	\subsubsection{Fragmentación}
+	Las stopwords son palabras muy frecuentes en el idioma que contribuyen a la coherencia en la construcción de frases, pero que a menudo aportan poco significado para los análisis realizados mediante algoritmos de PLN \cite{Siino2024}. Por ello, es común eliminarlas en etapas previas del procesamiento. Además, los límites computacionales y de tiempo hacen deseable reducir el número de palabras a analizar. Las stopwords son específicas para cada lengua y suelen pertenecer a categorías gramaticales como preposiciones, pronombres, adverbios, artículos y conjunciones \cite{Siino2024}. Los programas de procesamiento de lenguaje suelen incluir listas predefinidas de stopwords, las cuales deben revisarse y pueden ajustarse según las necesidades del estudio. En este trabajo, las stopwords fueron eliminadas antes del modelado de tópicos. \\
 	
 	
-	\subsection{Identificación de menciones a la ciencia con búsqueda semántica}
-	i.	Embeddings
-	ii.	Similitud de coseno
-	iii.	Tesauro Ciencia
-	iv.	Elección umbral
-	v.	Accuracy umbral
-	
-	\subsection{Análisis descriptivos y exploratorios de textos y autores (comparativos)}
-	\subsection{Análisis de entidades – NER (comparativos)}
-	\subsection{Análisis de temas (comparativos)}
-	\subsection{Análisis léxico-discursivo/ vocabulario (keywords in context, concordancias, n-grams, POS-tagging) (comparativos)}
+	La lematización implica reducir las palabras a su forma básica o raíz, lo que se conoce como lema, lo que ayuda a estandarizar el uso de las palabras en todo el texto. Por ejempo, lleva los verbos a infinitivo y las palabras en plural a singular \cite{Orellana2018}. Esta técnica es especialmente importante para tareas como el análisis de frecuencia de términos. La elección del modelo adecuado de lematización es fundamental. El primer criterio a considerar es el idioma del texto analizado, posteriormente, es necesario verificar que los resultados obtenidos sean correctos. En esta investigación, la lematización se aplicó antes del análisis léxico y el POS-tagging. Inicialmente se usó el algoritmo de lematización de la librería spaCy de Python, que aunque es rápido, no tuvo la precisión requerida. Finalmente, se usó el algoritmo de Stanford Stanza \cite{qi2020stanza}, que produjo resultados más precisos. 
 	
 	
-	Preprocesamiento básico -> Descriptivos textos -> Bertopic texto -> Fragmentar texto -> Búsqueda ciencia -> Análisis ciencia -> Descriptivos -> Bertopic -> Entidades
+	\subsection{Identificación de menciones a la ciencia}
+	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, utilizada como método de recuperación de información. La búsqueda semántica permite la recuperación de resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
 	
-	\subsection{Conceptos Claves}
-	Embeddings
-	Similitud de coseno
-	Análisis descriptivo
+	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2. La métrica que se usó para evaluar la similaridad entre los textos luego de ser codificados a embeddings fue la similitud de coseno. Para dos vectores $\mathbf{u}$ y $\mathbf{v}$ se define como:
+	
+	\begin{equation}
+		\text{sim}_{\cos}(\mathbf{u}, \mathbf{v}) = 
+		\frac{\mathbf{u} \cdot \mathbf{v}}
+		{\|\mathbf{u}\| \, \|\mathbf{v}\|}
+	\end{equation}
+	
+	donde $\mathbf{u} \cdot \mathbf{v}$ es el producto punto entre los vectores, y 
+	$\|\mathbf{u}\|$ y $\|\mathbf{v}\|$ corresponden a las normas euclidianas de cada uno \cite{Jurafsky2025}. Su valor oscila entre 1 y -1. Siendo 1 cuando los vectores van en la misma dirección, 0 si son perpendiculares y -1 cuando van en direcciones opuestas. \\
 	
 	
-	
-	
-	\subsection{Preprocesamiento (PLN)}
-	
-	Primero para trabajar con las columnas de opinión es necesario aplicar preprocesamiento básico. Se llevó las fechas al formato requerido para Python. Se aplicó una limpieza que incluyó 
+
 	
 	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todo los textos son divididos en fragmentos o ``chunks'', de tamaño 300 palabras con un mínimo de 100 palabras. Elegir un mínimo es importante, ya que cada columna se divide en los trozos empezando desde la primera palabra, entonces es posible que el ultimo trozo de cada columna sea demasiado corto, en caso de que el ultimo trozo no sea mayor al mínimo definido este se unirá al trozo anterior.
 	
 	
 	La razón para dividir chunks es que en textos muy largos puede ser complicado detectar menciones a la ciencia por todos los otros temas que podrían encontrarse, y en muy cortos se pierde el contexto necesario. También se aplica solapamiento entre los chunks, esto es que el segundo chunk de una columna no empieza exactamente cuando termina el otro si no un poco antes, esto facilita no perder contexto. 
-	Luego para cada chunk se calculará el embedding representativo. 
-	
-	
-	
-	\subsection{Búsqueda semántica de menciones a la ciencia}
-	
+	Luego para cada chunk se calculará el embedding representativo.
+
+	\subsubsection{Tesauro de la UNESCO}
 	¿Cómo podemos encontrar menciones y referencias a la ciencia en los fragmentos? Implementaremos búsqueda del tipo semántica. Para este tipo de búsqueda no es tan útil una definición de ciencia como un conjunto de términos que construyan un campo semántico especifico. Para esto se propone utilizar el tesauro de la UNESCO en la categoría ciencia.  
 	¿Por qué usar este tesauro? El tesauro de la UNESCO ``es una lista controlada y estructurada de términos para el análisis temático y la búsqueda de documentos y publicaciones en los campos de la educación, cultura, ciencias naturales, ciencias sociales y humanas, comunicación e información.'' \cite{unesco_thesaurus_1977}. 
 	Su primera versión en inglés fue publicada en 1977 pero es revisado y actualizado periódicamente. Para este trabajo usaremos en particular la lista llamada Ciencia, especializada en ciencias naturales. Esta lista nos permite acercarnos a la ciencia a partir de las palabras que la componen o se usan para identificarla en diferentes áreas. Esta categoría está compuesta por 17 subcategorías y cada una de ellas contiene entre 24 y 84 términos.
 	Para referencia, se incluye una tabla con los primeros términos de cada categoría en \ref{tab:categorias_ciencia}.
 	
-
+	
 	
 	{\footnotesize
 		\begin{longtable}{p{3.5cm}P{2cm}p{9cm}}
@@ -291,7 +281,7 @@
 			
 		\end{longtable}
 	}
-			
+	
 	
 	%% UNESCO: https://skos.um.es/unescothes/view.php?l=es&fmt=1
 	
@@ -304,7 +294,8 @@
 	
 	Luego se calculará la similitud de coseno para cada embedding de cada fragmento de columna con cada embedding de subacategoría para encontrar cercanía  semántica. Este valor se encuentra entre -1 y 1, donde un número más alto indica mayor similaridad semántica. Usualmente el valor es mayor a cero. Luego se requiere encontrar un umbral que permita separar los fragmentos suficientemente cercanos para clasificar como mención a la ciencia.
 	
-	\subsection{Elección umbral}
+	\subsubsection{Umbral de selección}
+	
 	Para encontrar un umbral que permita maximizar la diferencia entre lo que se determina como una mención de ciencia, de lo que no, primero se calculará la similaridad de coseno entre los embeddings de cada fragmento y cada subcategoría de términos. 
 	
 	Se consideran inicialmente, al observar la distribución, las similaridades mayores a 0.3. Luego por cada categoría se selecciona aleatoriamente un subconjunto de los fragmentos que cumplen esa similaridad. Este subconjunto es clasificado por un ser humano como mención de ciencia o no. Luego el conjunto construido debe ser de un tamaño pequeño: 7 fragmentos por cada subcategoría para un total de 119 textos, que se garantiza sean todos diferentes y que cada uno se compara con la categoría en la tiene mayor valor (mayor similaridad).
@@ -339,25 +330,44 @@
 		\text{Texto}_m & 0.55 & 0.33 & 0.28 & \cdots & 0.91
 	\end{array}
 	\]
-
 	
 	
-	
-	\subsection{Modelado y análisis}
-	Pendiente escribir.
-	
-	Estrategias para analizar nuestras menciones de ciencia versus el corpus completo.
-	
-	\subsection{BERTopic}
-	
-	\subsubsection{NER - Reconocimiento de Entidades Nombradas}
+	\subsection{Análisis descriptivos y exploratorios de textos y autores}
+	\subsection{Análisis de entidades – NER}
 	Con el modelo Babelscape/wikineural-multilingual-ner \cite{tedeschi-etal-2021-wikineural-combined}, que se encuentra en la librería Sentence Transformers, se hará un reconocimiento de entidades, entre los textos que tienen menciones de ciencia. Este modelo es capaz de hacer reconocimiento de entidades en texto en español. Reconoce lugares, personas, organizaciones y los demás elementos que considera entidades pero no clasifica entre los anteriores grupos los asigna a miscelaneos. 
+	
+	\subsection{Análisis de temas}
+	\subsection{Análisis léxico-discursivo/ vocabulario (keywords in context, concordancias, n-grams, POS-tagging)}
+	
 	
 
 	
 	\section{Resultados}
 	
 	En esta sección ...
+	Nueva estructura:
+	a.	Preprocesamiento ¿Cuántas palabras quedaron luego del preprocesamiento? ¿Qué diferencia hay entre el texto crudo y el texto procesado?
+	b.	Identificación menciones a la ciencia. 
+	i.	Umbral y valor de accuracy
+	ii.	 ¿Cuántas quedaron después? Algunos ejemplos.
+	iii.	Por subcategorías
+	c.	Análisis descriptivos y exploratorios de textos y autores (comparativos)
+	i.	Estadísticos descriptivos generales del corpus vs ciencia
+	ii.	Distribución de columnas y autores por periódico, general vs ciencia
+	iii.	Nubes de palabras general vs ciencia
+	iv.	Distribución temporal general vs ciencia
+	v.	Top autores en ciencia vs top en corpus
+	vi.	Por subcategorías
+	d.	Análisis de entidades – NER (comparativos)
+	i.	Tabla con metadatos? 
+	ii.	Resumen por afiliación
+	iii.	Resumen organización, actores, lugar
+	iv.	Top 
+	e.	Análisis de temas (comparativos)
+	i.	Temas obtenidos
+	ii.	
+	f.	Análisis léxico-discursivo/ vocabulario (keywords in context, concordancias, n-grams, POS-tagging) (comparativos)
+	
 	
 	\subsection{Análisis exploratorio y estadisticos descriptivos del corpus}
 	Las columnas de opinión reunidas provienen de tres periodicos colombianos: El Espectador, El Tiempo, El Colombiano, desde Enero de 2018 a Diciembre de 2020. 
