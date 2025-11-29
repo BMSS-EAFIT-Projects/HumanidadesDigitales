@@ -1,3 +1,4 @@
 models/topic_model.pkl
 reports/ideas PAPERS_08Oct.zip
 models/embedder_model.pkl
+data/processed/chunk_embeddings.npy

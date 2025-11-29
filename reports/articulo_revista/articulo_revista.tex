@@ -196,7 +196,9 @@
 	\subsection{Identificación de menciones a la ciencia}
 	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, utilizada como método de recuperación de información. La búsqueda semántica permite la recuperación de resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
 	
-	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2. La métrica que se usó para evaluar la similaridad entre los textos luego de ser codificados a embeddings fue la similitud de coseno. Para dos vectores $\mathbf{u}$ y $\mathbf{v}$ se define como:
+	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 [REF]. Este modelo fue elegido porque .. 
+	
+	La métrica que se usó para evaluar la similaridad entre los textos luego de ser codificados a embeddings fue la similitud de coseno. Para dos vectores $\mathbf{u}$ y $\mathbf{v}$ se define como:
 	
 	\begin{equation}
 		\text{sim}_{\cos}(\mathbf{u}, \mathbf{v}) = 
@@ -210,10 +212,10 @@
 	
 
 	
-	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todo los textos son divididos en fragmentos o ``chunks'', de tamaño 300 palabras con un mínimo de 100 palabras. Elegir un mínimo es importante, ya que cada columna se divide en los trozos empezando desde la primera palabra, entonces es posible que el ultimo trozo de cada columna sea demasiado corto, en caso de que el ultimo trozo no sea mayor al mínimo definido este se unirá al trozo anterior.
+	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todo los textos fueron divididos en fragmentos o ``chunks'', de tamaño 300 palabras con un mínimo de 100 palabras. Elegir un mínimo es importante, ya que cada columna se dividió en los trozos empezando desde la primera palabra. Luego fue posible que el último trozo de cada columna quedara demasiado corto. En caso de que el ultimo trozo no sea mayor al mínimo definido este se unió al trozo anterior.
 	
 	
-	La razón para dividir chunks es que en textos muy largos puede ser complicado detectar menciones a la ciencia por todos los otros temas que podrían encontrarse, y en muy cortos se pierde el contexto necesario. También se aplica solapamiento entre los chunks, esto es que el segundo chunk de una columna no empieza exactamente cuando termina el otro si no un poco antes, esto facilita no perder contexto. 
+	La razón para dividir fragmentos es que en común las columnas de opinión traten diferentes temas en el texto que es columnas de opinión  es que en textos muy largos puede ser complicado detectar menciones a la ciencia por todos los otros temas que podrían encontrarse, y en muy cortos se pierde el contexto necesario. También se aplica solapamiento entre los chunks, esto es que el segundo chunk de una columna no empieza exactamente cuando termina el otro si no un poco antes, esto facilita no perder contexto. 
 	Luego para cada chunk se calculará el embedding representativo.
 
 	\subsubsection{Tesauro de la UNESCO}

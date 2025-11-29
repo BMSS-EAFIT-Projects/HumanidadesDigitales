@@ -52,31 +52,54 @@ def aplicar_funcion_limpieza(corpus):
 
 def dividir_en_chunks_solapados(texto, tamaño=512, solapamiento=50, umbral_minimo=50):
     """
-    Divide un texto en chunks de 'tamaño' palabras con solapamiento.
-    Devuelve una lista de chunks.
-    
-    Args:
-        texto (str): Texto a dividir.
-        tamaño (int): Número máximo de palabras por chunk.
-        solapamiento (int): Número de palabras que se repiten entre chunks consecutivos.
-        umbral_minimo (int): Número mínimo de palabras para considerar un chunk válido.
+    Divide un texto en chunks de 'tamaño' palabras con solapamiento,
+    asegurando NO repetir el último segmento.
     """
+
     palabras = texto.split()
+    longitud = len(palabras)
+
+    if longitud == 0:
+        return []
+
     chunks = []
     paso = tamaño - solapamiento
-    
-    for i in range(0, len(palabras), paso):
-        chunk = palabras[i:i + tamaño]
+    i = 0
+
+    while i < longitud:
+        # Crear chunk
+        chunk = palabras[i: i + tamaño]
+
+        # Agregar si no está vacío
         if chunk:
             chunks.append(" ".join(chunk))
-    
-    # --- Ajustar último chunk si es demasiado corto ---
-    if len(chunks) > 1 and len(chunks[-1].split()) < umbral_minimo:
-        # Unir con el penúltimo
-        chunks[-2] = chunks[-2] + " " + chunks[-1]
-        chunks.pop(-1)  # eliminar el último
-    
+
+        # Avanzar al siguiente inicio
+        i += paso
+
+        # Si el siguiente inicio ya está dentro del último chunk, romper
+        if i >= longitud:
+            break
+
+    # --- Ajustar el último chunk si es demasiado corto ---
+    if len(chunks) > 1:
+        ultimo = chunks[-1].split()
+        if len(ultimo) < umbral_minimo:
+            # fusionar sin duplicaciones:
+            anteultimo = chunks[-2].split()
+
+            # palabras que no se repiten
+            diferencia = ultimo[len(anteultimo):] if len(ultimo) > len(anteultimo) else ultimo
+
+            # si diferencia es prácticamente nada, mejor descartar
+            if len(diferencia) == 0:
+                chunks.pop(-1)
+            else:
+                chunks[-2] = " ".join(anteultimo + diferencia)  # unir sin repetir
+                chunks.pop(-1)
+
     return chunks
+
 
 def crear_chunks(corpus, columna_texto="Texto_limpio", tamaño=512, solapamiento=50, umbral_minimo=50):
     """
