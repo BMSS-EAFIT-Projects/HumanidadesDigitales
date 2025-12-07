@@ -196,9 +196,15 @@
 	\subsection{Identificación de menciones a la ciencia}
 	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, utilizada como método de recuperación de información. La búsqueda semántica permite la recuperación de resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
 	
+	\subsubsection{Definición ciencia: tesauro de la UNESCO}
 	
 	
-	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 [REF]. Este modelo fue elegido porque .. 
+	
+	
+	
+	
+	
+	\subsubsection{Similitud de coseno}
 	
 	La métrica que se usó para evaluar la similaridad entre los textos luego de ser codificados a embeddings fue la similitud de coseno. Para dos vectores $\mathbf{u}$ y $\mathbf{v}$ se define como:
 	
@@ -210,6 +216,11 @@
 	
 	donde $\mathbf{u} \cdot \mathbf{v}$ es el producto punto entre los vectores, y 
 	$\|\mathbf{u}\|$ y $\|\mathbf{v}\|$ corresponden a las normas euclidianas de cada uno \cite{Jurafsky2025}. Su valor oscila entre 1 y -1. Siendo 1 cuando los vectores van en la misma dirección, 0 si son perpendiculares y -1 cuando van en direcciones opuestas. \\
+	
+	
+	\subsubsection{Selección modelo de embeddings}
+	
+	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 [REF]. Este modelo fue elegido porque .. 
 	
 	
 
