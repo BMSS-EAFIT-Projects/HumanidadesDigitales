@@ -179,7 +179,7 @@
 	???
 	Se recolectaron 13 mil columnas de opinión de tres periódicos colombianos de alta circulación. Estas fueron publicadas entre enero de 2018 y diciembre de 2020.  En esta fase el único filtro de selección fue que la columna fuera completamente texto y no incluyera video o audio necesario para entender su contenido. Las columnas no se seleccionaron por ningún tema en especifico.
 	
-	Para cada columna de opinión se recolectaron los siguientes metadatos: el nombre del periódico, el autor, la fecha, el título, el texto (cuerpo) de la columna y el vínculo. Se verificó que cada texto sea único (las columnas no se repiten) y se normalizaron los nombres de los autores. Luego de este proceso de asignaron números de identificación únicos para columna de opinión. 
+	Para cada columna de opinión se recolectaron los siguientes metadatos: el nombre del periódico, el autor, la fecha, el título, el texto (cuerpo) de la columna y el vínculo. Se verificó que cada texto sea único (las columnas no se repiten) y se normalizaron los nombres de los autores. Luego de este proceso se asignaron números de identificación únicos para cada columna de opinión. 
 	
 	\subsection{Preprocesamiento}
 	
@@ -194,49 +194,16 @@
 	
 	
 	\subsection{Identificación de menciones a la ciencia}
-	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, utilizada como método de recuperación de información. La búsqueda semántica permite la recuperación de resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
+	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, el cual es un método de recuperación de información. La búsqueda semántica permite recuperar resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan su significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
+	
+	En este trabajo, se implementó una búsqueda basada en conjuntos de palabras clave (queries o consultas) que representan a las ciencias exactas. Tanto los textos como las palabras clave fueron codificados, y posteriormente se midió la distancia semántica entre ellos. Con estos valores, se generó un ranking de similitud para identificar los textos que contienen menciones a la ciencia.
+	
 	
 	\subsubsection{Definición ciencia: tesauro de la UNESCO}
-	
-	
-	
-	
-	
-	
-	
-	\subsubsection{Similitud de coseno}
-	
-	La métrica que se usó para evaluar la similaridad entre los textos luego de ser codificados a embeddings fue la similitud de coseno. Para dos vectores $\mathbf{u}$ y $\mathbf{v}$ se define como:
-	
-	\begin{equation}
-		\text{sim}_{\cos}(\mathbf{u}, \mathbf{v}) = 
-		\frac{\mathbf{u} \cdot \mathbf{v}}
-		{\|\mathbf{u}\| \, \|\mathbf{v}\|}
-	\end{equation}
-	
-	donde $\mathbf{u} \cdot \mathbf{v}$ es el producto punto entre los vectores, y 
-	$\|\mathbf{u}\|$ y $\|\mathbf{v}\|$ corresponden a las normas euclidianas de cada uno \cite{Jurafsky2025}. Su valor oscila entre 1 y -1. Siendo 1 cuando los vectores van en la misma dirección, 0 si son perpendiculares y -1 cuando van en direcciones opuestas. \\
-	
-	
-	\subsubsection{Selección modelo de embeddings}
-	
-	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 [REF]. Este modelo fue elegido porque .. 
-	
-	
-
-	
-	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todo los textos fueron divididos en fragmentos o ``chunks'', de tamaño 300 palabras con un mínimo de 100 palabras. Elegir un mínimo es importante, ya que cada columna se dividió en los trozos empezando desde la primera palabra. Luego fue posible que el último trozo de cada columna quedara demasiado corto. En caso de que el ultimo trozo no sea mayor al mínimo definido este se unió al trozo anterior.
-	
-	
-	La razón para dividir fragmentos es que en común las columnas de opinión traten diferentes temas en el texto que es columnas de opinión  es que en textos muy largos puede ser complicado detectar menciones a la ciencia por todos los otros temas que podrían encontrarse, y en muy cortos se pierde el contexto necesario. También se aplica solapamiento entre los chunks, esto es que el segundo chunk de una columna no empieza exactamente cuando termina el otro si no un poco antes, esto facilita no perder contexto. 
-	Luego para cada chunk se calculará el embedding representativo.
-
-	\subsubsection{Tesauro de la UNESCO}
-	¿Cómo podemos encontrar menciones y referencias a la ciencia en los fragmentos? Implementaremos búsqueda del tipo semántica. Para este tipo de búsqueda no es tan útil una definición de ciencia como un conjunto de términos que construyan un campo semántico especifico. Para esto se propone utilizar el tesauro de la UNESCO en la categoría ciencia.  
-	¿Por qué usar este tesauro? El tesauro de la UNESCO ``es una lista controlada y estructurada de términos para el análisis temático y la búsqueda de documentos y publicaciones en los campos de la educación, cultura, ciencias naturales, ciencias sociales y humanas, comunicación e información.'' \cite{unesco_thesaurus_1977}. 
-	Su primera versión en inglés fue publicada en 1977 pero es revisado y actualizado periódicamente. Para este trabajo usaremos en particular la lista llamada Ciencia, especializada en ciencias naturales. Esta lista nos permite acercarnos a la ciencia a partir de las palabras que la componen o se usan para identificarla en diferentes áreas. Esta categoría está compuesta por 17 subcategorías y cada una de ellas contiene entre 24 y 84 términos.
+	Las palabras que se usaron para representar la ciencia son las incluidas en el tesauro de la UNESCO.
+	El tesauro de la UNESCO ``es una lista controlada y estructurada de términos para el análisis temático y la búsqueda de documentos y publicaciones en los campos de la educación, cultura, ciencias naturales, ciencias sociales y humanas, comunicación e información.'' \cite{unesco_thesaurus_1977}. 
+	Su primera versión en inglés fue publicada en 1977 pero es revisado y actualizado periódicamente. Para este trabajo se usó en particular la lista llamada Ciencia, especializada en ciencias naturales. Esta lista nos permitió acercarnos a la ciencia a partir de las palabras que la componen o se usan para identificarla en diferentes áreas. Esta categoría está compuesta por 17 subcategorías y cada una de ellas contiene entre 24 y 84 términos.
 	Para referencia, se incluye una tabla con los primeros términos de cada categoría en \ref{tab:categorias_ciencia}.
-	
 	
 	
 	{\footnotesize
@@ -296,6 +263,40 @@
 			
 		\end{longtable}
 	}
+	
+	
+	
+	
+	
+	
+	\subsubsection{Similitud de coseno}
+	
+	La métrica que se usó para evaluar la similaridad entre los textos luego de ser codificados a embeddings fue la similitud de coseno. Para dos vectores $\mathbf{u}$ y $\mathbf{v}$ se define como:
+	
+	\begin{equation}
+		\text{sim}_{\cos}(\mathbf{u}, \mathbf{v}) = 
+		\frac{\mathbf{u} \cdot \mathbf{v}}
+		{\|\mathbf{u}\| \, \|\mathbf{v}\|}
+	\end{equation}
+	
+	donde $\mathbf{u} \cdot \mathbf{v}$ es el producto punto entre los vectores, y 
+	$\|\mathbf{u}\|$ y $\|\mathbf{v}\|$ corresponden a las normas euclidianas de cada uno \cite{Jurafsky2025}. Su valor oscila entre 1 y -1. Siendo 1 cuando los vectores van en la misma dirección, 0 si son perpendiculares y -1 cuando van en direcciones opuestas. \\
+	
+	
+	\subsubsection{Selección modelo de embeddings}
+	
+	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 [REF]. Este modelo fue elegido porque .. 
+	
+	
+
+	
+	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todo los textos fueron divididos en fragmentos o ``chunks'', de tamaño 300 palabras con un mínimo de 100 palabras. Elegir un mínimo es importante, ya que cada columna se dividió en los trozos empezando desde la primera palabra. Luego fue posible que el último trozo de cada columna quedara demasiado corto. En caso de que el ultimo trozo no sea mayor al mínimo definido este se unió al trozo anterior.
+	
+	
+	La razón para dividir fragmentos es que en común las columnas de opinión traten diferentes temas en el texto que es columnas de opinión  es que en textos muy largos puede ser complicado detectar menciones a la ciencia por todos los otros temas que podrían encontrarse, y en muy cortos se pierde el contexto necesario. También se aplica solapamiento entre los chunks, esto es que el segundo chunk de una columna no empieza exactamente cuando termina el otro si no un poco antes, esto facilita no perder contexto. 
+	Luego para cada chunk se calculará el embedding representativo.
+
+	
 	
 	
 	%% UNESCO: https://skos.um.es/unescothes/view.php?l=es&fmt=1
