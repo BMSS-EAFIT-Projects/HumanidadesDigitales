@@ -173,13 +173,34 @@
 	
 	\subsection{Diagrama de flujo}
 	
-	Preprocesamiento básico -> Descriptivos textos -> Bertopic texto -> Fragmentar texto -> Búsqueda ciencia -> Análisis ciencia -> Descriptivos -> Bertopic -> Entidades
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{figures/diagrama_paper_ciencia.png}
+		\caption{Distribución de flujo con la metodología aplicada.}
+		\label{fig:diagramaflujo}
+	\end{figure}
 	
 	\subsection{Recolección data}
 	???
 	Se recolectaron 13 mil columnas de opinión de tres periódicos colombianos de alta circulación. Estas fueron publicadas entre enero de 2018 y diciembre de 2020.  En esta fase el único filtro de selección fue que la columna fuera completamente texto y no incluyera video o audio necesario para entender su contenido. Las columnas no se seleccionaron por ningún tema en especifico.
 	
 	Para cada columna de opinión se recolectaron los siguientes metadatos: el nombre del periódico, el autor, la fecha, el título, el texto (cuerpo) de la columna y el vínculo. Se verificó que cada texto sea único (las columnas no se repiten) y se normalizaron los nombres de los autores. Luego de este proceso se asignaron números de identificación únicos para cada columna de opinión. 
+	
+	\begin{table}[H]
+		\centering
+		\caption{Distribución de columnas y autores por periódico}
+		\label{tab:col_autores_periodico}
+		\footnotesize
+		\begin{tabular}{l c c c}
+			\hline
+			\textbf{Periódico} & \textbf{Número de columnas} & \textbf{Número de autores distintos} & \textbf{\% del total de columnas} \\
+			\hline
+			El Tiempo & 10509 & 263 & 76.84\\
+			El Espectador & 1982 &  249 & 14.49\\
+			Semana & 1185 & 96  & 8.66\\
+			\hline
+		\end{tabular}
+	\end{table}
 	
 	\subsection{Preprocesamiento}
 	
@@ -211,13 +232,13 @@
 			\caption{Categorías de Ciencia del Tesauro de la UNESCO y los primeros términos de cada una.} \label{tab:categorias_ciencia}\\
 			
 			\toprule
-			\textbf{Categoría} & \textbf{Nº de términos} & \textbf{Primeros 10 términos} \\
+			\textbf{Subcategoría} & \textbf{Nº de términos} & \textbf{Primeros 10 términos} \\
 			\midrule
 			\endfirsthead
 			
 			\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- continuación}} \\
 			\toprule
-			\textbf{Categoría} & \textbf{Nº de términos} & \textbf{Primeros 10 términos} \\
+			\textbf{Subcategoría} & \textbf{Nº de términos} & \textbf{Primeros 10 términos} \\
 			\midrule
 			\endhead
 			
@@ -265,9 +286,26 @@
 	}
 	
 	
+	\subsubsection{Selección modelo de embeddings}
+	
+	Para seleccionar el modelo de embeddings preentrenado que se utilizó para codificar tanto las palabras del tesauro como los textos, fue indispensable considerar la tarea para la cual fue optimizado el modelo, el idioma y su tamaño. La elección se basó en los resultados del método de evaluación MMTEB: Massive Multilingual Text Embedding Benchmark, desarrollado por \cite{enevoldsen2025mmtebmassivemultilingualtext}.
+
+	Para este proyecto, era necesario que el modelo incluyera el idioma español y mostrara un buen rendimiento en tareas de similitud semántica. Asimismo, se valoró que su tamaño fuera inferior a 500 millones de parámetros para facilitar su manejo computacional.
+
+	Uno de los modelos que mejor cumplió con estas características fue embeddinggemma-300m, desarrollado por Google \cite{vera2025embeddinggemmapowerfullightweighttext}.
+
+	En este modelo además cumple con tener una ventana de contexto de hasta 2048 tokens. 
 	
 	
+	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todos los textos se dividieron en fragmentos o chunks de aproximadamente 150 palabras, con un mínimo de 100 palabras y un solapamiento de 20 palabras entre fragmentos consecutivos. Definir un tamaño mínimo es importante porque cada columna se fragmenta comenzando desde la primera palabra, lo que puede generar que el último trozo quede demasiado corto. Si el fragmento final no supera el mínimo establecido, se une al fragmento anterior.
 	
+	La división en fragmentos se justifica porque las columnas de opinión suelen abordar varios temas, lo que dificulta identificar menciones a la ciencia en textos extensos debido a la presencia de otros tópicos. Por el contrario, fragmentos demasiado breves pierden el contexto necesario. Además, cada trozo de texto que se codifica mediante embeddings debe contener menos tokens que el máximo permitido por el modelo. El solapamiento entre fragmentos —es decir, que el segundo chunk comience unas palabras antes de que termine el primero— ayuda a conservar el contexto.
+	
+	Posteriormente, se calcula el embedding representativo de cada fragmento.
+	
+	Para cada subcategoría del tesauro se obtiene también un embedding, concatenando todas las palabras claves asociadas a la categoría y calculando el embedding correspondiente a esa cadena de texto.
+	
+	Finalmente, se calcula la similitud de coseno entre el embedding de cada fragmento de las columnas y el embedding de cada subcategoría, con el fin de identificar la cercanía semántica.
 	
 	\subsubsection{Similitud de coseno}
 	
@@ -280,113 +318,202 @@
 	\end{equation}
 	
 	donde $\mathbf{u} \cdot \mathbf{v}$ es el producto punto entre los vectores, y 
-	$\|\mathbf{u}\|$ y $\|\mathbf{v}\|$ corresponden a las normas euclidianas de cada uno \cite{Jurafsky2025}. Su valor oscila entre 1 y -1. Siendo 1 cuando los vectores van en la misma dirección, 0 si son perpendiculares y -1 cuando van en direcciones opuestas. \\
-	
-	
-	\subsubsection{Selección modelo de embeddings}
-	
-	En este trabajo se empleó, como representación vectorial de los textos, un modelo de embeddings de oraciones basado en la arquitectura transformer. Esta arquitectura permite que los modelos aprendan el contexto en ambas direcciones para una palabra o frase. En particular, se utilizó Sentence-BERT (S-BERT) \cite{reimers-2019-sentence-bert, reimers-2020-multilingual-sentence-bert}, el cual ha demostrado ser eficiente y eficaz en tareas de similitud semántica medidas mediante la similitud de coseno. Específicamente, se empleó un modelo multilingüe que incluye el español: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 [REF]. Este modelo fue elegido porque .. 
+	$\|\mathbf{u}\|$ y $\|\mathbf{v}\|$ corresponden a las normas euclidianas de cada uno \cite{Jurafsky2025}. Su valor oscila entre 1 y -1. Siendo 1 cuando los vectores van en la misma dirección, 0 si son perpendiculares y -1 cuando van en direcciones opuestas. Esta métrica se utiliza con frecuencia para medir la similitud textual.\\
 	
 	
 
-	
-	Para realizar las búsquedas semánticas en el texto de las columnas de opinión, todo los textos fueron divididos en fragmentos o ``chunks'', de tamaño 300 palabras con un mínimo de 100 palabras. Elegir un mínimo es importante, ya que cada columna se dividió en los trozos empezando desde la primera palabra. Luego fue posible que el último trozo de cada columna quedara demasiado corto. En caso de que el ultimo trozo no sea mayor al mínimo definido este se unió al trozo anterior.
-	
-	
-	La razón para dividir fragmentos es que en común las columnas de opinión traten diferentes temas en el texto que es columnas de opinión  es que en textos muy largos puede ser complicado detectar menciones a la ciencia por todos los otros temas que podrían encontrarse, y en muy cortos se pierde el contexto necesario. También se aplica solapamiento entre los chunks, esto es que el segundo chunk de una columna no empieza exactamente cuando termina el otro si no un poco antes, esto facilita no perder contexto. 
-	Luego para cada chunk se calculará el embedding representativo.
-
-	
-	
-	
-	%% UNESCO: https://skos.um.es/unescothes/view.php?l=es&fmt=1
-	
-	%% https://vocabularies.unesco.org/documents/thesaurusintrospa.pdf
-	
-	
-	
-	
-	Por cada subcategoría, se calculará un embedding representativo. Eso se hará calculando el embedding respectivo a cada término de la subcategoría y luego promediando todos.
-	
-	Luego se calculará la similitud de coseno para cada embedding de cada fragmento de columna con cada embedding de subacategoría para encontrar cercanía  semántica. Este valor se encuentra entre -1 y 1, donde un número más alto indica mayor similaridad semántica. Usualmente el valor es mayor a cero. Luego se requiere encontrar un umbral que permita separar los fragmentos suficientemente cercanos para clasificar como mención a la ciencia.
-	
 	\subsubsection{Umbral de selección}
 	
-	Para encontrar un umbral que permita maximizar la diferencia entre lo que se determina como una mención de ciencia, de lo que no, primero se calculará la similaridad de coseno entre los embeddings de cada fragmento y cada subcategoría de términos. 
 	
-	Se consideran inicialmente, al observar la distribución, las similaridades mayores a 0.3. Luego por cada categoría se selecciona aleatoriamente un subconjunto de los fragmentos que cumplen esa similaridad. Este subconjunto es clasificado por un ser humano como mención de ciencia o no. Luego el conjunto construido debe ser de un tamaño pequeño: 7 fragmentos por cada subcategoría para un total de 119 textos, que se garantiza sean todos diferentes y que cada uno se compara con la categoría en la tiene mayor valor (mayor similaridad).
+	Para determinar un umbral que permitiera maximizar la diferencia entre lo que se considera una mención de ciencia y lo que no, primero se calculó la similitud de coseno entre los embeddings de cada fragmento y los de cada subcategoría de términos representativa de ciencia. Este procedimiento generó la matriz de similitud $S$
 	
-	Para determinar el umbral que logra la precisión más alta, se calcula para diferentes valores de umbrales, desde 0 hasta 1, en un salto de 0.01, la cantidad de aciertos de cada umbral según la clasificación hecha por humanos. 
+	\begin{equation}
+		\mathbf{S} =
+		\begin{bmatrix}
+			s_{1,1} & s_{1,2} & s_{1,3} & \cdots & s_{1,n} \\
+			s_{2,1} & s_{2,2} & s_{2,3} & \cdots & s_{2,n} \\
+			s_{3,1} & s_{3,2} & s_{3,3} & \cdots & s_{3,n} \\
+			\vdots  & \vdots  & \vdots  & \ddots & \vdots  \\
+			s_{m,1} & s_{m,2} & s_{m,3} & \cdots & s_{m,n}
+		\end{bmatrix}
+	\end{equation}
 	
-	Con este umbral se seleccionan los fragmentos que se consideran menciones de ciencia. 
+	donde $ s_{i,j} = \text{similitud}( \text{Texto}_i, \text{Subcategoría}_j )$
+	
+	Luego, a cada texto se le asignó la subcategoría con el puntaje más alto. Sin embargo, este método asigna una categoría a todos los textos, incluso a aquellos que no contienen menciones relevantes a la ciencia. Por ello, es necesario definir un umbral de selección: si el valor de similitud es menor que dicho umbral, se considera que el texto no menciona ciencia; si es mayor, se considera que sí lo hace.
+	
+	Para determinar este umbral, se clasificó manualmente una pequeña muestra de fragmentos mediante lectura cercana y se construyó una medida de accuracy. Para la selección de los fragmentos, se eligieron aleatoriamente 10 por categoría. Previamente, se revisó la distribución de puntajes y se estimó que un valor adecuado para el filtro inicial sería mayor que 0.4. Con base en ello, se filtraron los fragmentos con puntaje superior a 0.4 y, a partir de ese conjunto, se seleccionaron aleatoriamente 10 fragmentos por subcategoría, obteniendo así un total de 170 fragmentos. 
+	
+	Estos fragmentos fueron leídos manualmente y se les asignó una etiqueta de 1 si contenían una mención a ciencia y 0 en caso contrario; es decir, se definió una variable 
+	
+	$$ y_i \in \{0,1\}$$.
+	
+	Posteriormente, para determinar el umbral óptimo, se consideraron distintos valores en el rango
+	
+	$$
+	u \in [0,1]
+	$$
+	
+	con incrementos de 0.01. Para cada valor de umbral, se calculó la predicción
+	
+	$$
+	\hat{y}_i(u) = 
+	\begin{cases}
+		1, & s_i \ge u, \\
+		0, & s_i < u,
+	\end{cases}
+	$$
+	
+	donde $s_i$ es el puntaje (valor de similitud con su categoría) asignado al fragmento $i$.
+	
+	Finalmente, para cada umbral $u$ se calculó el accuracy correspondiente con el fin de seleccionar el valor que maximiza este indicador. El accuracy se definió como
+	
+	\begin{equation}
+		\mathrm{Acc}(u) = \frac{1}{N} \sum_{i=1}^{N} \mathbf{1}\!\left[\hat{y}_i(u) = y_i\right]
+	\end{equation}
+	
+	donde \(\mathbf{1}[\cdot]\) es la función indicadora, definida como
 	
 	\[
-	\mathbf{S} =
-	\begin{bmatrix}
-		s_{1,1} & s_{1,2} & s_{1,3} & \cdots & s_{1,n} \\
-		s_{2,1} & s_{2,2} & s_{2,3} & \cdots & s_{2,n} \\
-		s_{3,1} & s_{3,2} & s_{3,3} & \cdots & s_{3,n} \\
-		\vdots  & \vdots  & \vdots  & \ddots & \vdots  \\
-		s_{m,1} & s_{m,2} & s_{m,3} & \cdots & s_{m,n}
-	\end{bmatrix}
+	\mathbf{1}[A] =
+	\begin{cases}
+		1, & \text{si el evento } A \text{ es verdadero}, \\
+		0, & \text{si el evento } A \text{ es falso}.
+	\end{cases}
 	\]
 	
-	\[
-	\text{donde } s_{i,j} = \text{similitud}( \text{Texto}_i, \text{C	at}_j )
-	\]
+	En este caso, el evento es \(\hat{y}_i(u) = y_i\).
+
+	\subsection{Análisis descriptivos y exploratorios del texto}
+	Para caracterizar el corpus y establecer una base adecuada para los análisis posteriores, se llevó a cabo un procedimiento de descripción general mediante el cálculo de diversos estadísticos. Entre ellos se incluyeron el número total de palabras, la cantidad de palabras únicas, así como la longitud máxima y mínima por documento. Estos indicadores permiten dimensionar la estructura y amplitud del conjunto de textos antes de avanzar hacia análisis más específicos.
 	
-	\[
-	\mathbf{S} =
-	\begin{array}{c|ccccc}
-		& \text{cat}_1 & \text{cat}_2 & \text{cat}_3 & \cdots & \text{cat}_n \\ \hline
-		\text{Texto}_1 & 0.92 & 0.46 & 0.12 & \cdots & 0.77 \\
-		\text{Texto}_2 & 0.88 & 0.51 & 0.09 & \cdots & 0.69 \\
-		\text{Texto}_3 & 0.73 & 0.60 & 0.15 & \cdots & 0.81 \\
-		\vdots         & \vdots & \vdots & \vdots & \ddots & \vdots \\
-		\text{Texto}_m & 0.55 & 0.33 & 0.28 & \cdots & 0.91
-	\end{array}
-	\]
+	Asimismo, con el propósito de obtener una aproximación exploratoria al contenido discursivo, se generaron dos nubes de palabras: una correspondiente al corpus completo y otra al subcorpus de ciencia. Para su construcción se aplicó un preprocesamiento que involucró limpieza textual, normalización y tokenización. Las nubes se elaboraron a partir de las frecuencias de términos, facilitando una comparación preliminar de los vocabularios predominantes en cada conjunto.
+	
+	Finalmente, se desarrolló un análisis temporal basado en el cálculo del volumen mensual de documentos y en la identificación de aquellos que contienen menciones asociadas a ciencia. Este procedimiento permitió estructurar una serie cronológica destinada a examinar las dinámicas temporales de la presencia temática en etapas posteriores del análisis.
 	
 	
-	\subsection{Análisis descriptivos y exploratorios de textos y autores}
+	
 	\subsection{Análisis de entidades – NER}
-	Con el modelo Babelscape/wikineural-multilingual-ner \cite{tedeschi-etal-2021-wikineural-combined}, que se encuentra en la librería Sentence Transformers, se hará un reconocimiento de entidades, entre los textos que tienen menciones de ciencia. Este modelo es capaz de hacer reconocimiento de entidades en texto en español. Reconoce lugares, personas, organizaciones y los demás elementos que considera entidades pero no clasifica entre los anteriores grupos los asigna a miscelaneos. 
+	El reconocimiento de entidades nombradas (NER, por sus siglas en inglés) es una tarea del procesamiento del lenguaje natural que consiste en identificar las entidades mencionadas en un texto y clasificarlas en categorías preestablecidas (por ejemplo, personas, lugares u organizaciones) \cite{Jehangir2023}. Este proceso desempeña un papel fundamental en diversos ámbitos, como el análisis de redes sociales, la anotación semántica, la traducción automática, los sistemas de preguntas y respuestas, el resumen automático de texto, la clasificación documental, la detección de spam y la minería de opiniones \cite{Jehangir2023}.
+	
+	En este trabajo se aplicó un modelo de reconocimiento de entidades nombradas a todo el corpus, y posteriormente se realizó un análisis comparativo con el subcorpus de ciencia. Para ello, se calculó la frecuencia de aparición de cada entidad en ambos corpus y se obtuvo el cociente que indica en qué medida una entidad aparece con mayor frecuencia en textos relacionados con ciencia que en el resto del corpus.
+	
+	El modelo utilizado fue Babelscape/wikineural-multilingual-ner \cite{tedeschi-etal-2021-wikineural-combined}, disponible en la librería Sentence Transformers. Este modelo presenta métricas sólidas y está preentrenado con datos que incluyen el español. Reconoce lugares, personas y organizaciones, y agrupa en una categoría miscelánea aquellas entidades que no se ajustan a estos tipos.
 	
 	\subsection{Análisis de temas}
-	\subsection{Análisis léxico-discursivo/ vocabulario (keywords in context, concordancias, n-grams, POS-tagging)}
+	El modelado de tópicos se emplea para inferir los temas latentes presentes en una colección de documentos \cite{Abdelrazek2023}. Este tipo de métodos busca modelar tres entidades principales: colecciones, tópicos y constructos. Los constructos corresponden a los elementos que se agrupan para conformar un tópico (típicamente, las palabras que componen los documentos). Desde un punto de vista matemático, un tópico se representa como una distribución de probabilidad sobre dichos constructos \cite{Abdelrazek2023}.
 	
+	En la literatura se han definido cuatro categorías de métodos para el modelado de tópicos: algebraicos, difusos, probabilísticos y neuronales. Los modelos algebraicos fueron los primeros en desarrollarse, alrededor de la década de 1990. En la actualidad, los modelos neuronales son los que concentran la mayor atención en investigación, destacándose entre ellos BERTopic. Este modelo combina embeddings preentrenados con técnicas de aprendizaje no supervisado y algoritmos de clustering, y ha demostrado una alta eficacia para identificar temas en colecciones de datos debido a su capacidad para preservar y representar el significado semántico \cite{Grootendorst2022}.
 	
-
+	Por estas razones, en este trabajo se aplicó BERTopic. Se estimaron tópicos tanto para el corpus general como para el subcorpus de ciencia y, posteriormente, se realizaron análisis comparativos entre ambos.
+	
+	\subsection{Análisis de vocabulario con POS-tagging}
+	Con el fin de identificar el vocabulario más relevante asociado al discurso sobre ciencia en las columnas de opinión, se realizó un análisis de frecuencia de verbos, adjetivos y sustantivos tanto en el corpus general como en el subcorpus de ciencia. Para obtener estas categorías gramaticales se empleó un modelo de Part-of-Speech Tagging (POS-tagging). Esta tarea consiste en asignar a cada palabra su categoría sintáctica correspondiente (sustantivo, verbo, adjetivo, preposición, entre otras) \cite{he2020surveyrecentadvancessequence}. El POS-tagging constituye un componente fundamental en diversas aplicaciones del procesamiento del lenguaje natural, tales como traducción automática, recuperación y extracción de información, análisis sintáctico, desambiguación semántica y análisis de sentimientos \cite{Chiche2022}.
+	
+	Para este trabajo se utilizó el POS-tagger de Stanza, un paquete de análisis lingüístico para Python que incluye modelos entrenados para múltiples idiomas, entre ellos el español \cite{qi2020stanzapythonnaturallanguage}. Este modelo fue seleccionado debido a sus métricas de desempeño reportadas y a su adecuación para textos periodísticos. En el corpus analizado mostró un comportamiento consistente, permitiendo extraer de manera fiable las clases gramaticales necesarias para el análisis comparativo de frecuencias.
 	
 	\section{Resultados}
+	En esta sección se describen los resultados obtenidos a partir de la aplicación de los métodos expuestos.
 	
-	En esta sección ...
-	Nueva estructura:
-	a.	Preprocesamiento ¿Cuántas palabras quedaron luego del preprocesamiento? ¿Qué diferencia hay entre el texto crudo y el texto procesado?
-	b.	Identificación menciones a la ciencia. 
-	i.	Umbral y valor de accuracy
-	ii.	 ¿Cuántas quedaron después? Algunos ejemplos.
-	iii.	Por subcategorías
-	c.	Análisis descriptivos y exploratorios de textos y autores (comparativos)
-	i.	Estadísticos descriptivos generales del corpus vs ciencia
-	ii.	Distribución de columnas y autores por periódico, general vs ciencia
-	iii.	Nubes de palabras general vs ciencia
-	iv.	Distribución temporal general vs ciencia
-	v.	Top autores en ciencia vs top en corpus
-	vi.	Por subcategorías
-	d.	Análisis de entidades – NER (comparativos)
-	i.	Tabla con metadatos? 
-	ii.	Resumen por afiliación
-	iii.	Resumen organización, actores, lugar
-	iv.	Top 
-	e.	Análisis de temas (comparativos)
-	i.	Temas obtenidos
-	ii.	
-	f.	Análisis léxico-discursivo/ vocabulario (keywords in context, concordancias, n-grams, POS-tagging) (comparativos)
+	\subsection{Identificación de menciones a la ciencia}
+	Se realizó la clasificación manual de 170 fragmentos, a partir de la cual se determinó que un umbral adecuado es 0.47, obteniéndose una precisión de 0.741. En la Figura \ref{fig:distribucion-scores} se muestran las etiquetas asignadas según cada umbral, mientras que la Figura \ref{fig:accuracy-umbral} presenta el umbral óptimo calculado a partir de las etiquetas manuales y los valores de similitud.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/distribucion_scores.png}
+			\caption{Distribución de scores.}
+			\label{fig:distribucion-scores}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/accuracy_umbral.png}
+			\caption{Accuracy por umbral.}
+			\label{fig:accuracy-umbral}
+		\end{subfigure}
+		\caption{Resultados de análisis de clasificación: distribución de scores y precisión según umbral.}
+		\label{fig:resultados-clasificacion}
+	\end{figure}
+	
+	Las 13676 columnas de opinión fueron divididas en 62651 fragmentos. De estos, 7267 fragmentos fueron identificados como relacionados con ciencia, lo que corresponde al 11.6 \%. A nivel de documento, 4154 columnas de opinión contienen al menos una mención a la ciencia, equivalente al 30.4\% del total. En la Tabla \ref{tab:res_fragmentos_subcategoria} se muestra como se distribuyen los fragmentos con menciones en las 17 subcategorías.
 	
 	
-	\subsection{Análisis exploratorio y estadisticos descriptivos del corpus}
-	Las columnas de opinión reunidas provienen de tres periodicos colombianos: El Espectador, El Tiempo, El Colombiano, desde Enero de 2018 a Diciembre de 2020. 
+	{\footnotesize
+		\begin{longtable}{p{7cm}P{4cm}P{4cm}}
+			\caption{Cantidad de fragmentos con menciones a la ciencia con porcentaje respecto al total por categoría} \label{tab:res_fragmentos_subcategoria}\\
+			\toprule
+			\textbf{Subcategoría} & \textbf{Número de fragmentos} & \textbf{Porcentaje del total} \\
+			\midrule
+			\endfirsthead
+			
+			\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- continuación}} \\
+			\toprule
+			\textbf{Subcategoría} & \textbf{Número de fragmentos} & \textbf{Porcentaje del total} \\
+			\midrule
+			\endhead
+			
+			\midrule \multicolumn{3}{r}{{Continúa en la siguiente página}} \\
+			\endfoot
+			
+			\bottomrule
+			\endlastfoot
+			
+			Administración de la ciencia y de la investigación & 3195 & 43.97\% \\
+			Polución, catástrofes y seguridad & 1566 & 21.55\% \\
+			Ciencias ambientales e ingeniería & 635 & 8.74\% \\
+			Ciencias naturales & 470 & 6.47\% \\
+			Patología & 375 & 5.16\% \\
+			Ciencias médicas & 306 & 4.21\% \\
+			Matemáticas y estadística & 250 & 3.44\% \\
+			Hidrología & 104 & 1.43\% \\
+			Recursos naturales & 68 & 0.94\% \\
+			Enfoque científico & 64 & 0.88\% \\
+			Ciencias del espacio & 61 & 0.84\% \\
+			Geografía y oceanografía & 49 & 0.67\% \\
+			Biología & 36 & 0.50\% \\
+			Meteorología & 28 & 0.39\% \\
+			Ciencias de la tierra & 23 & 0.32\% \\
+			Ciencias físicas & 20 & 0.28\% \\
+			Ciencias químicas & 17 & 0.23\% \\
+			\midrule
+			\textbf{Total} & \textbf{7267} & \textbf{100\%} \\
+		\end{longtable}
+	}
+	
+	 
+	
+	A  continuación se incluyen algunos ejemplos de los fragmentos seleccionados. \\
+	 
+	
+	De la categoría: Administración de la ciencia y de la investigación
+	
+	\begin{quote}
+		(...) separado. El Ministerio de Ciencia, Tecnología e Innovación tiene la responsabilidad de convocar la constitución de un Sistema Nacional de Innovación que asuma como propósito desarrollar la hoja de ruta planteada por la Misión de Sabios, alineando a todos los actores a nivel local, regional y nacional. El conocimiento siempre es un logro colectivo. Frente a los desafíos que afrontamos como país, es necesario que asumamos colectivamente, todos los actores, el reto de gestionar el conocimiento, aprendiendo de manera continua, para ponerlo al servicio de las comunidades. Para superar la crisis y lograr las transformaciones estructurales se requiere planeación y un trabajo de mediano y largo plazo, en donde todos sumemos sin pensar solo en réditos inmediatos. Un sistema en donde el arte, las humanidades, la tecnología y las ciencias sociales y exactas, como expresión del conocimiento, hagan parte de la cotidianidad de los colombianos nos exige dejar de actuar (...)
+	\end{quote}
+	
+	De la categoría Ciencias ambientales e ingeniería
+	
+	\begin{quote}
+		(...) la justicia ambiental y climática. 4. Articular los objetivos de desarrollo sostenible y la agenda 2030 del posconflicto, focalizándonos en energías renovables, transporte multimodal, bioconstrucción, permacultura, autoconsumo y territorios hídricos resilientes. 5. Redefinir la relación urbanorural, enfatizando restauración y conservación de ecosistemas, equidad, solidaridad, corresponsabilidad e identidad. 6. Revisar el modelo mineroenergético ajustándolo al ordenamiento ambiental territorial, no construir nuevos megaproyectos hidroeléctricos, negar el uso del fracking y hacer transición energética hacia energías renovables alternativas. 7. Promover la educación integral y la democratización de la información y el conocimiento como instrumentos de construcción de la paz, respetando las utopías y las diversidades culturales y naturales. 8. Fortalecer la investigación científica, la innovación y otros modos de construcción del conocimiento como medios para mejorar el conocimiento de la realidad ecológica, climática y cultural. 9. Reconocer a la naturaleza como víctima del conflicto armado y del modelo de desarrollo colombiano, y, por (...)
+	\end{quote}
+	
+	De la categoría Matemáticas y estadística
+	
+	\begin{quote}
+		(...) la ciencia aspira a los modelos económicos, a reducirlo todo a un cuerpo teórico pequeño de donde se puedan desprender, por deducción directa, sus corolarios básicos. En matemáticas, digamos, es más bella una demostración corta y aritmética que otra más larga que deba recurrir al cálculo para demostrar lo mismo. Todas las geometrías se desarrollan a partir de un puñado de postulados elementales. Los físicos sueñan con la Teoría del Todo están hartos de lidiar con ese enjambre de partículas empalagosas. ¡Eso no es elegante!. En ciencia, como en arte, lo bello es lo breve, lo simple, así haya siempre una secreta complejidad escondida entre los pliegues. Sí, dedicaré lo mejor de mis días a la búsqueda de la fragancia madre y cuando la encuentre la envasaré en un frasquito que será una gema discreta, claro, y la pondré a los pies de mi esposa, lo prometo. El resto será (...)
+	\end{quote}
+	
+	De la categoría Ciencias químicas
+	
+	\begin{quote}
+		(...) a la formación en ciencias de la naturaleza sabemos que el conocimiento científico y tecnológico tiene unos efectos sociales, económicos y políticos que se deben analizar rigurosamente para que nuestros estudiantes fundamenten su formación ciudadana de manera amplia y crítica, de tal manera que cuenten con las herramientas conceptuales y metodológicas para participar activamente en la vida social. Por ejemplo, cuando estudiamos el tema de hidrocarburos, no solo debemos entender su disposición en la naturaleza, sus propiedades y estructuras químicas, sino también analizar su importancia social, los procesos de explotación y los usos sociales que, en su mayoría, están asociados a la generación de energía a partir de la mezcla de hidrocarburos más famosa que conocemos en el mundo y que denominamos petróleo; al estudiar este tema no solo debemos comprenderlo científicamente, sino considerar simultáneamente que esta mezcla de sustancias orgánicas representa el componente central de la matriz energética del (...)
+	\end{quote}
+	
+	
+	
+	\subsection{Análisis descriptivos y exploratorios}
 	
 	\begin{table}[H]
 		\centering
@@ -409,73 +536,26 @@
 		\end{tabular}
 	\end{table}
 	
-	La riqueza léxica obtenida como el cociente entre el total de palabras únicas y el total de palabras fue del 3.3\%.
-	
-	
-	\begin{table}[H]
-		\centering
-		\caption{Distribución de columnas y autores por periódico}
-		\label{tab:col_autores_periodico}
-		\begin{tabular}{l c c c}
-			\hline
-			\textbf{Periódico} & \textbf{Número de columnas} & \textbf{Número de autores distintos} & \textbf{\% del total de columnas} \\
-			\hline
-			El Tiempo & 10509 & 263 & 76.84\\
-			El Espectador & 1982 &  249 & 14.49\\
-			Semana & 1185 & 96  & 8.66\\
-			\hline
-		\end{tabular}
-	\end{table}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{figures/nube_palabras.png}
-		\caption{Nube de palabras del corpus general (sin stopwords)}
-		\label{fig:nube-palabras}
-	\end{figure}
-	
-	\subsection{Elección umbral para búsqueda de ciencia}
-	 En la Figura \ref{fig:distribucion-scores}, se encuentra la distribución de scores dados por la similaridad de coseno, para cada uno de los fragmentos previamente etiquetados como ciencia o no ciencia. No en todos los casos, mayores valores de score implica que el fragmento está más relacionado con ciencia pero si la mayoría de veces, luego permite estimar. 
-	 Al calcular el accuracy para cada umbral entre 0 y 1 con paso 0.01, se encuentra que el valor que mejor separa las dos clases es el 0.40, Figura \ref{fig:accuracy-umbral}.
-	
-	\begin{figure}[H]
+		\begin{figure}[H]
 		\centering
 		\begin{subfigure}{0.48\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{figures/distribucion_scores.png}
+			\includegraphics[width=\textwidth]{figures/nube_general.png}
 			\caption{Distribución de scores.}
-			\label{fig:distribucion-scores}
+			\label{fig:nube_general}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{0.48\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{figures/accuracy_umbral.png}
+			\includegraphics[width=\textwidth]{figures/nube_ciencia.png}
 			\caption{Accuracy por umbral.}
-			\label{fig:accuracy-umbral}
+			\label{fig:nube_ciencia}
 		\end{subfigure}
 		\caption{Resultados de análisis de clasificación: distribución de scores y precisión según umbral.}
-		\label{fig:resultados-clasificacion}
+		%\label{fig:resultados-clasificacion}
 	\end{figure}
 	
-	
-	
-	\subsection{Identificación ciencia}
-	Definido el umbral se calculan estadísticos descriptivos sobre los fragmentos seleccionados.
-	De los 35319 fragmentos en los que fue dividido todo el corpus de columnas, con el umbral determinado de 0.4 para la similaridad se encontraron 4287 fragmentos con menciones a la ciencia. Estos aparecen en 3004 columnas de opinión de las 13676. A nivel fragmento corresponde al 12\% y a nivel columna 22\%. 
-	De esas 3004 columnas de opinión, hay un solo fragmento de ciencia en el 67.34\% (2023 columnas). Y se encuentran dos fragmentos en el 25.33\%. \\
-	Esto podría ser un indicativo de que a menudo aparecen menciones a la ciencia en columnas que no tratan mayoritariamente un tema científico.
-	Aunque es importante tener en cuenta que la mayoría de columnas fueron dividades en dos y tres fragmentos. 
-	Se calcula que en las columnas que hay menciones de ciencia, estos fragmentos corresponden al 55.41\% del texto.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{figures/dist_cols_ciencia.png}
-		\caption{Distribución de columnas según numero de fragmentos científicos encontrados en el texto}
-		\label{fig:dist_cols_fragmentos}
-	\end{figure}
-	
-	\subsubsection{Distribución temporal}
-	La figura \ref{fig:dist_mensual_ciencia} muestra como se dan estas apariciones en toda la línea temporal. Donde más se presentan apariciones es en los meses marzo y abril del 2020, luego podemos concluir que una gran cantidad de menciones a la ciencia están relacionadas al inicio de la pandemia por el covid-19. 
+	La Figura \ref{fig:dist_mensual_ciencia} muestra, para cada mes, el número total de columnas y la cantidad de aquellas que contienen al menos una mención a la ciencia, permitiendo observar su evolución a lo largo del período analizado. El mayor número de apariciones se concentra en marzo y abril de 2020, lo que sugiere que una proporción significativa de las menciones a la ciencia está asociada al inicio de la pandemia de COVID-19.
 	
 	\begin{figure}[H]
 		\centering
@@ -484,132 +564,103 @@
 		\label{fig:dist_mensual_ciencia}
 	\end{figure}
 	
-	\subsubsection{Distribución por autores}
-	En la Figura \ref{fig:autores_ciencia} se pueden observar los 15 autores con más menciones de ciencia en sus columnas, en dos de estos, corresponden a más del 80\% de sus columnas. Es el caso de Juan Pablo Ruiz Soto y Brigitte Baptiste. Juan Pablo Ruiz Soto fue un importante ambientalista, además economista, en el país, a menudo sus columnas de opinión trataron sobre la protección al medio ambiente.  Brigitte Baptiste es una reconocida bióloga, profesora e investigadora colombiana. 
 	
-	\begin{figure}[H]
+	
+	\subsection{Reconocimiento de entidades nombradas}
+	
+	Se calcularon las entidades más frecuentes, cociente filtrado más del 30\%
+	
+
+	\begin{table}[H]
 		\centering
-		\includegraphics[width=0.95\textwidth]{figures/autores_ciencia_comparativo.png}
-		\caption{Autores con más columnas con menciones de ciencia}
-		\label{fig:autores_ciencia}
-	\end{figure}
-	
-	\subsubsection{Por subcategorías}
-	Cantidad de fragmentos por subcategorías. 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.95\textwidth]{figures/subcategorias_principales.png}
-		\caption{Cantidad de fragmentos por subcategoría}
-		\label{fig:subcat_fragmentos}
-	\end{figure}
-	Esto nos habla de que cuando se habla de ciencia en estas columnas de opinión principalmente se hace desde cuestiones medio ambientales y de como se administra la ciencia en el país y no tanto desde lo físico o lo químico.
-	
-	INCLUIR EJEMPLOS
-	
-	\subsubsection{Nubes de palabras}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.95\textwidth]{figures/nube_ciencia_fragmentos.png}
-		\caption{Nube de palabras de los fragmentos seleccionados}
-		\label{fig:frag_ciencia}
-	\end{figure}
-	
-	
-	\subsection{Análisis por palabras}
-	
-	Esta tabla incluye las palabras más frecuentes en las columnas con al menos una mención de ciencia. Estas columnas representan el 22\% del corpus, luego es interesante observar que palabras aparecen en las columnas con menciones de ciencia en proporción mayor a este número. El 50\% de apariciones de la palabra salud aparece relacionada a ciencia. Asi tambien el 62\% de apariciones de agua, el 51\% de pandemia, 45\% desarrollo 41\% recursos, 40\% universidad. Esto indica que a menudo las menciones de ciencia son las que capturan la mayor parte de la presencia de términos relacionados con la pandemia y la salud, también con el desarrollo, agua y recursos (medio ambiente), también universidad (educación).
-	
-	\begin{table}
-		\begin{center}
-			\input{tablas/tabla_frecuencias_columnas.tex}
-		\end{center}
+		\caption{Frecuencia comparativa de personajes en corpus general vs. corpus científico}
+		\label{tab:ents_per}
+		\footnotesize 
+
+		\begin{tabular}{p{3cm}P{2.2cm}P{2.2cm}P{2.2cm}p{5cm}}
+			\toprule
+			\textbf{Entidad (PER)} & 
+			\textbf{Frec. Corpus} & 
+			\textbf{Frec. Ciencia} & 
+			\textbf{\% Ciencia/ Corpus} & 
+			\textbf{Descripción} \\
+			\midrule
+			Humboldt & 63 & 23 & 36 & Naturalista, geógrafo y explorador alemán, siglo XVIII y XIX. \\
+			Newton & 25 & 9 & 36 & Físico inglés, siglos XVII y XVIII. \\
+			Stephen Hawking & 41 & 16 & 39 & Científico y divulgador británico, siglos XX y XXI. \\
+			Charles Darwin & 25 & 11 & 44 & Naturalista inglés, siglo XIX. \\
+			Greta Thunberg & 50 & 16 & 32 & Activista ambiental sueca, siglo XXI. \\
+			Ricardo Lozano & 15 & 7 & 46 & Geólogo y ex ministro de Ambiente y Desarrollo Sostenible de Colombia (2018). \\
+			Mabel Torres & 13 & 7 & 53 & Científica colombiana y ex Ministra de Ciencia, Tecnología e Innovación de Colombia (2020) \\
+			Wade Davis & 12 & 4 & 33 & Científico canadiense-colombiano. \\
+			Dolly Montoya Castaño & 12 & 4 & 33 & Científica colombiana y ex rectora de la Universidad Nacional de Colombia. \\
+			Carl Sagan & 10 & 5 & 50 & Astrónomo, astrofísico, divulgador estadounidense, siglo XX.\\
+			
+			\bottomrule
+		\end{tabular}
 	\end{table}
 	
-	\subsection{Coocurrencias}
-	
-	\subsection{Entidades reconocidas}
-	
-	\begin{figure}[H]
+		\begin{table}[H]
 		\centering
-		\begin{subfigure}[t]{0.32\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/grafo_ciencia_2018.png}
-			\caption{2018}
-			\label{fig:grafo_ciencia_2018}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[t]{0.32\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/grafo_ciencia_2019.png}
-			\caption{2019}
-			\label{fig:grafo_ciencia_2019}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[t]{0.32\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/grafo_ciencia_2020.png}
-			\caption{2020}
-			\label{fig:grafo_ciencia_2020}
-		\end{subfigure}
-		\caption{Redes de entidades (personas y organizaciones) asociadas al término \textit{ciencia} en columnas de opinión, por año.}
-		\label{fig:grafos_ciencia_anuales}
-	\end{figure}
+		\caption{Frecuencia comparativa de organizaciones en corpus general vs. corpus científico}
+		\label{tab:ents_org}
+		\footnotesize 
+		
+		\begin{tabular}{p{3cm}P{2.2cm}P{2.2cm}P{2.2cm}p{5cm}}
+			\toprule
+			\textbf{Entidad (ORG)} & 
+			\textbf{Frec. Corpus} & 
+			\textbf{Frec. Ciencia} & 
+			\textbf{\% Ciencia/ Corpus} & 
+			\textbf{Descripción} \\
+			\midrule
+			OCDE & 296 & 86 & 30 & Organización para la Cooperación y el Desarrollo Económico, organización internacional
+			 \\
+			Universidad Pedagógica Nacional & 117 & 55 & 47 & Universidad pública en Colombia \\
+			Pontificia Universidad Javeriana & 103 & 33 & 32 & Universidad privada en Colombia. \\
+			Ministerio de Agricultura & 111 & 33 & 30 & Ministerio de Colombia encargado del Sector Agropecuario, Pesquero y de Desarrollo Rural.  \\
+			Colciencias & 74 & 47 & 63 & Anterior entidad encargada de promover las políticas públicas en ciencia, tecnología e innovación en Colombia. Reemplazada por Minciencias en 2019. \\
+			Ministerio de Ambiente y Desarrollo Sostenible & 70 & 41 & 59 & Ministerio colombiano encargado de políticas en materia ambiental. \\
+			Universidad de Massachusetts Amherst & 49 & 21 & 42 & Universidad pública y centro de investigación de Estados Unidos ubicada en Amherst, Massachusetts. \\
+			Finagro & 44 & 15 & 34 & Fondo para el financiamiento del sector agropecuario, organización financiera en Colombia. \\
+			IDEAM & 40 & 24 & 60 & Instituto de Hidrología, Meteorología y Estudios Ambientales de Colombia. \\
+			FAO & 40 & 15 & 37 & Organización de las Naciones Unidas para la Alimentación y la Agricultura.\\
+			
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Frecuencia comparativa de ubicaciones geográficas en corpus general vs. corpus científico}
+		\label{tab:ents_loc}
+		\footnotesize 
+		\begin{tabular}{p{3cm}P{2.2cm}P{2.2cm}P{2.2cm}p{5cm}}
+			\toprule
+			\textbf{Entidad (LOC)} & 
+			\textbf{Frec. Corpus} & 
+			\textbf{Frec. Ciencia} & 
+			\textbf{\% Ciencia/Corpus} & 
+			\textbf{Descripción/Contexto} \\
+			\midrule
+			Amazonia & 306 & 112 & 37,21 & Región biogeográfica que comprende la selva tropical de la cuenca del Amazonas en Suramérica. \\
+			Hidroituango & 127 & 46 & 36,22 & Proyecto hidroeléctrico en Antioquia, Colombia, sobre el río Cauca. \\
+			Río Cauca & 93 & 33 & 32,58 & Segundo río más importante de Colombia, atraviesa la región andina. \\
+			Orinoquia & 40 & 14 & 35,00 & Región natural de Colombia y Venezuela, también conocida como Llanos Orientales. \\
+			Río Bogotá & 31 & 16 & 51,61 & Río que atraviesa la sabana de Bogotá, con importantes problemas de contaminación. \\
+			Sabana & 28 & 13 & 46,43 & Referencia a la Sabana de Bogotá, altiplano en la cordillera Oriental. \\
+			Parques Nacionales Naturales (PNN) & 35 & 15 & 33,33 & Sistema de áreas protegidas de Colombia, dependiente del Ministerio de Ambiente. \\
+			Mar Caribe & 20 & 7 & 35,00 & Mar abierto tropical del océano Atlántico, baña las costas norte de Colombia. \\
+			Mocoa & 18 & 9 & 50,00 & Ciudad capital del departamento de Putumayo, Colombia, en la región amazónica. \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 	
 	
-	Tengo una lista de entidades ya. Decidir como mostrar alguna cosa de ahí.
-	Algunas organizaciones interesantes:
-	Universidades, ONU, Universidad Nacional de Colombia
-	Unión Europea
-	Universidad Pedagógica Nacional
-	OMS
-	OCDE
-	UCI
-	Ministerio de Ambiente
-	Ministerio de Agricultura
-	Google
-	Colciencias
-	Ministerio de Educación
-	ICA
-	Amazon
-	Ministerio de Educación Nacional
-	Netflix
-	Unesco
-	Ministerio de Ciencia, Tecnología e Innovación
-	Ministerio del Interior
-	NASA
-	Sena
-	Universidad de Harvard
-	Academia Nacional de Medicina
-	Harvard
-	IPCC
-	Instituto Nacional de Salud
-	Karisma
-	Microsoft
-	Agencia Internacional para la Investigación del Cáncer
-	Agencia Nacional de Licencias Ambientales
-	Alianza Colombia Libre de Fracking
-	Otras 66 nombres de universidades que salen solo una vez
-	
-	
-	Algunas personas, además de muchos politicos:
-	Stephen Hawking
-	Humboldt
-	papa Francisco
-	Buda
-	Greta Thunberg
-	Newton
-	Camus
-	Darwin
-	Brigitte Baptiste
-
-	
-	
-	
-	
-	
-	
-	Resumen de hallazgos cuantitativos (frecuencias, tópicos, marcos) y cualitativos (funciones argumentativas, retóricas, simbólicas). 
-
+	\subsection{Modelado de tópicos}
+		Terminando de correr
+	\subsection{POS-tagging y vocabulario}
+		Terminando de correr
 
 	
 	\section{Discusión}

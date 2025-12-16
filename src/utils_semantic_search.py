@@ -180,5 +180,7 @@ def calcular_similitudes_documentos(chunks_df, chunk_embeddings, subcat_embeddin
     # DataFrame resultado
     sim_doc_df = pd.DataFrame(sim_matrix, columns=subcats)
     sim_doc_df.insert(0, "id_doc", doc_ids)
+    #sim_doc_df.insert(1, "texto_chunk", chunks_df["texto_chunk"].values)
+
 
     return sim_doc_df
