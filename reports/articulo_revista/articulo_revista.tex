@@ -168,10 +168,9 @@
 	\section{Metodología}
 	
 	Para responder a la pregunta de investigación propuesta, se aplicaron métodos de minería de texto y procesamiento de lenguaje natural (PLN). La metodología se dividió en tres partes principales: Primero, identificar menciones a la ciencia en las columnas de opinión y crear un subcorpus. Luego, aplicar algoritmos para analizar los autores, los actores, temas y vocabulario tanto en el subcorpus como en el corpus general para hacer comparaciones. Y, por último, interpretar los elementos obtenidos a la luz de acontecimientos ocurridos en el país durante las fechas de publicación de las columnas de opinión, además de identificar afiliaciones de autores y actores mencionados para enriquecer el análisis. 
-	El proceso realizado se describe en el diagrama de flujo...
-	Todos estos análisis se llevaron a cabo en Python. 
+	El proceso realizado se describe en el diagrama de flujo de la Figura \ref{fig:diagramaflujo}.
+	Todos estos análisis se llevaron a cabo con Python. 
 	
-	\subsection{Diagrama de flujo}
 	
 	\begin{figure}
 		\centering
@@ -195,8 +194,8 @@
 			\hline
 			\textbf{Periódico} & \textbf{Número de columnas} & \textbf{Número de autores distintos} & \textbf{\% del total de columnas} \\
 			\hline
-			El Tiempo & 10509 & 263 & 76.84\\
-			El Espectador & 1982 &  249 & 14.49\\
+			El Espectador & 10509 & 263 & 76.84\\
+			El Tiempo & 1982 &  249 & 14.49\\
 			Semana & 1185 & 96  & 8.66\\
 			\hline
 		\end{tabular}
@@ -206,16 +205,16 @@
 	
 	Cuando se analiza texto, es necesario prepararlo y limpiarlo para llevarlo a un formato adecuado antes de aplicar los algoritmos de PLN \cite{Chai2022}. A esta etapa se le conoce como preprocesamiento del texto.  En esta investigación, primero se efectuó una limpieza en el texto de cada columna de opinión, eliminando las urls, los hashtags y las menciones a usuarios de redes sociales (@), así como espacios en blanco extra y caracteres distintos de letras, números y puntuación común. Luego se aplicaron diversas técnicas como tokenización, eliminación de stopwords y lematización según la necesidad de cada algoritmo de análisis. Estas técnicas se definen y explican a continuación. \\
 	
-	La tokenización es el proceso mediante el cual un texto se divide en unidades más pequeñas llamadas tokens. Este paso permite transformar el texto no estructurado en un formato estructurado y, por tanto, susceptible de análisis \cite{Tyagi_text}. En este trabajo, la tokenización se realizó dividiendo el texto por espacios, es decir, segmentándolo en palabras. \\
+	La tokenización es el proceso mediante el cual un texto se divide en unidades más pequeñas llamadas tokens. Este paso permite transformar el texto no estructurado en un formato estructurado y, por tanto, susceptible de análisis \cite{Tyagi_text}. En este trabajo, la tokenización se realizó dividiendo el texto por espacios, es decir, segmentándolo en palabras. Por ejemplo, la oración "La tokenización es elemental", se convierte en "La", "tokenización", "es", "elemental". \\
 	
-	Las stopwords son palabras muy frecuentes en el idioma que contribuyen a la coherencia en la construcción de frases, pero que a menudo aportan poco significado para los análisis realizados mediante algoritmos de PLN \cite{Siino2024}. Por ello, es común eliminarlas en etapas previas del procesamiento. Además, los límites computacionales y de tiempo hacen deseable reducir el número de palabras a analizar. Las stopwords son específicas para cada lengua y suelen pertenecer a categorías gramaticales como preposiciones, pronombres, adverbios, artículos y conjunciones \cite{Siino2024}. Los programas de procesamiento de lenguaje suelen incluir listas predefinidas de stopwords, las cuales deben revisarse y pueden ajustarse según las necesidades del estudio. En este trabajo, las stopwords fueron eliminadas antes del modelado de tópicos. \\
+	Las stopwords son palabras muy frecuentes en el idioma que contribuyen a la coherencia en la construcción de frases, pero que a menudo aportan poco significado para los análisis realizados mediante algoritmos de PLN \cite{Siino2024}. Por ello, es común eliminarlas en etapas previas del procesamiento. Además, los límites computacionales y de tiempo hacen deseable reducir el número de palabras a analizar. Las stopwords son específicas para cada lengua y suelen pertenecer a categorías gramaticales como preposiciones, pronombres, adverbios, artículos y conjunciones \cite{Siino2024}. Los programas de procesamiento de lenguaje suelen incluir listas predefinidas de stopwords, las cuales deben revisarse y pueden ajustarse según las necesidades del estudio. En este trabajo, las stopwords fueron eliminadas antes del modelado de tópicos, uno de los métodos implementados en este proyecto y que se describe en la sección \ref{sec:topic_model}. \\
 	
 	
-	La lematización implica reducir las palabras a su forma básica o raíz, lo que se conoce como lema, lo que ayuda a estandarizar el uso de las palabras en todo el texto. Por ejempo, lleva los verbos a infinitivo y las palabras en plural a singular \cite{Orellana2018}. Esta técnica es especialmente importante para tareas como el análisis de frecuencia de términos. La elección del modelo adecuado de lematización es fundamental. El primer criterio a considerar es el idioma del texto analizado, posteriormente, es necesario verificar que los resultados obtenidos sean correctos. En esta investigación, la lematización se aplicó antes del análisis léxico y el POS-tagging. Inicialmente se usó el algoritmo de lematización de la librería spaCy de Python, que aunque es rápido, no tuvo la precisión requerida. Finalmente, se usó el algoritmo de Stanford Stanza \cite{qi2020stanza}, que produjo resultados más precisos. 
+	La lematización implica reducir las palabras a su forma básica o raíz, lo que se conoce como lema, lo que ayuda a estandarizar el uso de las palabras en todo el texto. Por ejempo, lleva los verbos a infinitivo y las palabras en plural a singular \cite{Orellana2018}. Esta técnica es especialmente importante para tareas como el análisis de frecuencia de términos. La elección del modelo adecuado de lematización es fundamental. El primer criterio a considerar es el idioma del texto analizado, posteriormente, es necesario verificar que los resultados obtenidos sean correctos. En esta investigación, la lematización se aplicó antes del análisis léxico y el POS-tagging. Inicialmente se usó el algoritmo de lematización de la librería spaCy de Python, que aunque es rápido, no tuvo la precisión requerida. Finalmente, se usó el algoritmo de Stanford Stanza \cite{qi2020stanza}, que al estar basado en redes neuronales, tiene mayor precisión a la hora de obtener la forma raíz correcta de las palabras del español. 
 	
 	
 	\subsection{Identificación de menciones a la ciencia}
-	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, el cual es un método de recuperación de información. La búsqueda semántica permite recuperar resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan su significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
+	Para alcanzar el objetivo propuesto en esta investigación, es necesario identificar las menciones a la ciencia presentes en un texto. Para ello, se desarrolló una estrategia derivada de la búsqueda semántica, la cual es un método de recuperación de información. La búsqueda semántica permite recuperar resultados o documentos basándose en la similitud semántica sin que haya superposición de palabras clave \cite{Wei2022}. Para lograrlo, combina embeddings, que son representaciones vectoriales de los textos que preservan su significado y contexto, con métodos para medir la similitud semántica, como la similitud de coseno. \\
 	
 	En este trabajo, se implementó una búsqueda basada en conjuntos de palabras clave (queries o consultas) que representan a las ciencias exactas. Tanto los textos como las palabras clave fueron codificados, y posteriormente se midió la distancia semántica entre ellos. Con estos valores, se generó un ranking de similitud para identificar los textos que contienen menciones a la ciencia.
 	
@@ -224,7 +223,7 @@
 	Las palabras que se usaron para representar la ciencia son las incluidas en el tesauro de la UNESCO.
 	El tesauro de la UNESCO ``es una lista controlada y estructurada de términos para el análisis temático y la búsqueda de documentos y publicaciones en los campos de la educación, cultura, ciencias naturales, ciencias sociales y humanas, comunicación e información.'' \cite{unesco_thesaurus_1977}. 
 	Su primera versión en inglés fue publicada en 1977 pero es revisado y actualizado periódicamente. Para este trabajo se usó en particular la lista llamada Ciencia, especializada en ciencias naturales. Esta lista nos permitió acercarnos a la ciencia a partir de las palabras que la componen o se usan para identificarla en diferentes áreas. Esta categoría está compuesta por 17 subcategorías y cada una de ellas contiene entre 24 y 84 términos.
-	Para referencia, se incluye una tabla con los primeros términos de cada categoría en \ref{tab:categorias_ciencia}.
+	Para referencia, se incluye una tabla con los primeros términos de cada categoría en la Tabla \ref{tab:categorias_ciencia}.
 	
 	
 	{\footnotesize
@@ -288,6 +287,7 @@
 	
 	\subsubsection{Selección modelo de embeddings}
 	
+	Para este proyecto se decidió usar un modelo de embeddings preentrenado, esto quiere decir que es un modelo que fue creado y entrenado previamente con un gran volumen de datos y por tanto puede aprovecharse en otro conjuntos de datos diferente, haciendo posible analizar data sin crear un modelo de cero. [BUSCAR CITA]
 	Para seleccionar el modelo de embeddings preentrenado que se utilizó para codificar tanto las palabras del tesauro como los textos, fue indispensable considerar la tarea para la cual fue optimizado el modelo, el idioma y su tamaño. La elección se basó en los resultados del método de evaluación MMTEB: Massive Multilingual Text Embedding Benchmark, desarrollado por \cite{enevoldsen2025mmtebmassivemultilingualtext}.
 
 	Para este proyecto, era necesario que el modelo incluyera el idioma español y mostrara un buen rendimiento en tareas de similitud semántica. Asimismo, se valoró que su tamaño fuera inferior a 500 millones de parámetros para facilitar su manejo computacional.
@@ -400,12 +400,20 @@
 	
 	El modelo utilizado fue Babelscape/wikineural-multilingual-ner \cite{tedeschi-etal-2021-wikineural-combined}, disponible en la librería Sentence Transformers. Este modelo presenta métricas sólidas y está preentrenado con datos que incluyen el español. Reconoce lugares, personas y organizaciones, y agrupa en una categoría miscelánea aquellas entidades que no se ajustan a estos tipos.
 	
-	\subsection{Análisis de temas}
+	\subsection{Análisis de temas}\label{sec:topic_model}
 	El modelado de tópicos se emplea para inferir los temas latentes presentes en una colección de documentos \cite{Abdelrazek2023}. Este tipo de métodos busca modelar tres entidades principales: colecciones, tópicos y constructos. Los constructos corresponden a los elementos que se agrupan para conformar un tópico (típicamente, las palabras que componen los documentos). Desde un punto de vista matemático, un tópico se representa como una distribución de probabilidad sobre dichos constructos \cite{Abdelrazek2023}.
 	
 	En la literatura se han definido cuatro categorías de métodos para el modelado de tópicos: algebraicos, difusos, probabilísticos y neuronales. Los modelos algebraicos fueron los primeros en desarrollarse, alrededor de la década de 1990. En la actualidad, los modelos neuronales son los que concentran la mayor atención en investigación, destacándose entre ellos BERTopic. Este modelo combina embeddings preentrenados con técnicas de aprendizaje no supervisado y algoritmos de clustering, y ha demostrado una alta eficacia para identificar temas en colecciones de datos debido a su capacidad para preservar y representar el significado semántico \cite{Grootendorst2022}.
 	
 	Por estas razones, en este trabajo se aplicó BERTopic. Se estimaron tópicos tanto para el corpus general como para el subcorpus de ciencia y, posteriormente, se realizaron análisis comparativos entre ambos.
+	
+	La implementación de este modelo en Python permite controlar diversos pasos del proceso, como el tipo de modelo de embeddings a utilizar, así como modificar parámetros como el número máximo de tópicos que se desea obtener y el número mínimo de documentos necesarios para formar un tópico.
+	
+	Una estrategia para evaluar la calidad de los tópicos es la métrica de coherencia. Esta métrica se basa en principios probabilísticos y se ha estimado que valores más altos de coherencia se correlacionan con un mayor nivel de entendimiento de los tópicos generados según la opinión humana, como indican \cite{Rder2015}.
+	
+	El modelado se aplicó sobre todos los fragmentos utilizando el mismo modelo de embeddings empleado para la identificación de menciones a la ciencia: embeddinggemma-300m. Posteriormente, se aplicó una reducción de outliers con el objetivo de forzar al modelo a clasificar la mayor parte de los documentos.
+	
+	Para seleccionar el número óptimo de tópicos, el modelo se ejecutó con distintos valores de este parámetro y se calculó la métrica de coherencia para cada uno, lo que permitió aproximar el valor del parámetro correspondiente al mejor modelo.
 	
 	\subsection{Análisis de vocabulario con POS-tagging}
 	Con el fin de identificar el vocabulario más relevante asociado al discurso sobre ciencia en las columnas de opinión, se realizó un análisis de frecuencia de verbos, adjetivos y sustantivos tanto en el corpus general como en el subcorpus de ciencia. Para obtener estas categorías gramaticales se empleó un modelo de Part-of-Speech Tagging (POS-tagging). Esta tarea consiste en asignar a cada palabra su categoría sintáctica correspondiente (sustantivo, verbo, adjetivo, preposición, entre otras) \cite{he2020surveyrecentadvancessequence}. El POS-tagging constituye un componente fundamental en diversas aplicaciones del procesamiento del lenguaje natural, tales como traducción automática, recuperación y extracción de información, análisis sintáctico, desambiguación semántica y análisis de sentimientos \cite{Chiche2022}.
@@ -415,7 +423,7 @@
 	\section{Resultados}
 	En esta sección se describen los resultados obtenidos a partir de la aplicación de los métodos expuestos.
 	
-	\subsection{Identificación de menciones a la ciencia}
+	\subsection{Identificación de menciones a la ciencia}\label{sec:ident_menciones}
 	Se realizó la clasificación manual de 170 fragmentos, a partir de la cual se determinó que un umbral adecuado es 0.47, obteniéndose una precisión de 0.741. En la Figura \ref{fig:distribucion-scores} se muestran las etiquetas asignadas según cada umbral, mientras que la Figura \ref{fig:accuracy-umbral} presenta el umbral óptimo calculado a partir de las etiquetas manuales y los valores de similitud.
 	
 	\begin{figure}[H]
@@ -658,9 +666,192 @@
 	
 	
 	\subsection{Modelado de tópicos}
-		Terminando de correr
-	\subsection{POS-tagging y vocabulario}
-		Terminando de correr
+		Se corrió el modelado de tópicos modificando el parámetro número de tópicos y se calculó el valor de coherencia para cada modelo. Se obtuvieron los resultados que se muestran en la tabla \ref{tab:coherence_topics}. 
+		
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{ccccc}
+				\hline
+				\textbf{num\_topics} & \textbf{num\_topics\_final} & \textbf{coherence\_c\_v} & \textbf{\% outliers} \\
+				\hline
+				auto & 63 & 0.681289 & 0.0 \\
+				60   & 59 & 0.671076 & 0.0 \\
+				30   & 29 & 0.652175 & 0.0 \\
+				40   & 39 & 0.635335 & 0.0 \\
+				20   & 19 & 0.545472 & 0.0 \\
+				10   & 9  & 0.480771 & 0.0 \\
+				\hline
+			\end{tabular}
+			\caption{Resultados del modelado de tópicos para distintos valores del parámetro \textit{num\_topics}}
+			\label{tab:coherence_topics}
+		\end{table}
+		
+		El número de tópicos finales es menor en una unidad en todos los casos respecto al número de tópicos definido por el parámetro, ya que al aplicar la reducción de outliers se elimina el tópico que agrupa a dichos documentos atípicos.
+		
+		Se observa que, al aumentar el número máximo de tópicos, el valor de la métrica de coherencia tiende a incrementarse. En particular, el número máximo de tópicos que el modelo generó de manera automática fue de 63.
+		
+		Manteniendo el modelo de 63 tópicos, en la tabla \ref{tab:bertopic_coherence_top} se presentan los 10 tópicos con mayor porcentaje de documentos agrupados, junto con el valor de coherencia calculado para cada uno y sus respectivas palabras representativas. En conjunto, estos 10 tópicos concentran el 70\% de los fragmentos analizados.
+		
+		\begin{table}[H]
+			\centering
+			\small
+			\begin{tabularx}{\textwidth}{c c c X}
+				\hline
+				\textbf{Topic} & \textbf{Coherence  ($c_v$)} & \textbf{Percentage (\%)} & \textbf{Keywords} \\
+				\hline
+				0  & 0.5509 & 40.06 & presidente, gobierno, duque, paz, país, uribe, colombia, política, años, petro \\
+				2  & 0.8437 & 5.58  & economía, impuestos, crecimiento, ingresos, fiscal, empresas, tasa, empleo, pib, déficit \\
+				1  & 0.7322 & 5.27  & pandemia, virus, salud, coronavirus, covid19, mundo, cuarentena, medidas, crisis, personas \\
+				3  & 0.8185 & 4.25  & educación, estudiantes, universidad, universidades, calidad, formación, superior, nacional, profesores, colegios \\
+				4  & 0.8427 & 3.34  & mujeres, mujer, hombres, sexual, violencia, género, sexo, feminismo, acoso, sexuales \\
+				7  & 0.6890 & 2.53  & redes, información, datos, facebook, medios, sociales, comunicación, personas, internet, twitter \\
+				8  & 0.7879 & 2.23  & hectáreas, rural, deforestación, tierras, agricultura, productores, agropecuario, cultivos, 000, desarrollo \\
+				5  & 0.8642 & 2.13  & fútbol, jugadores, equipo, juego, equipos, copa, selección, deporte, gol, mundial \\
+				20 & 0.5990 & 2.05  & corrupción, corruptos, públicos, consulta, anticorrupción, lucha, funcionarios, recursos, país, política \\
+				6  & 0.8998 & 1.61  & cocina, comida, comer, restaurante, plato, sabores, arroz, platos, sabor, casa \\
+				\hline
+			\end{tabularx}
+			\caption{Top tópicos de BERTopic con coherencia por tópico ($c_v$), porcentaje de documentos y palabras representativas}
+			\label{tab:bertopic_coherence_top}
+		\end{table}
+		
+		El mismo procedimiento fue aplicado a los fragmentos clasificados como menciones a la ciencia. 
+		
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{c c c c}
+				\hline
+				\textbf{num\_topics} & \textbf{num\_topics\_final} & \textbf{Coherence $c_v$} & \textbf{\% Outliers} \\
+				\hline
+				20   & 19 & 0.695491 & 0.0 \\
+				40   & 28 & 0.695162 & 0.0 \\
+				auto & 26 & 0.694176 & 0.0 \\
+				30   & 28 & 0.681233 & 0.0 \\
+				60   & 27 & 0.678842 & 0.0 \\
+				10   & 9  & 0.622583 & 0.0 \\
+				\hline
+			\end{tabular}
+			\caption{Resultados de BERTopic para distintos valores de \texttt{num\_topics}, especifico ciencia}
+			\label{tab:bertopic_nr_topics_ciencia}
+		\end{table}
+		
+		En este caso, el mejor modelo entre los evaluados fue el de 20 tópicos, de acuerdo con la métrica utilizada. Para este modelo, los resultados se presentan en la Tabla \ref{tab:topics_ciencia}. Asimismo, se observa que el 90\% de los documentos se concentró en los 10 primeros tópicos, lo que indica una alta concentración temática en un subconjunto reducido de tópicos.
+		
+		\begin{table}[H]
+			\centering
+			\small
+			\begin{tabularx}{\textwidth}{c c c X}
+				\hline
+				\textbf{Topic} & \textbf{Coherence ($c_v$)} & \textbf{Percentage (\%)} & \textbf{Keywords} \\
+				\hline
+				1  & 0.493785 & 25.62 & política, gobierno, paz, país, seguridad, violencia, político, políticos, justicia, colombia \\
+				0  & 0.460526 & 21.69 & salud, mundo, vida, pandemia, tiempo, ciencia, personas, virus, años, crisis \\
+				3  & 0.574302 & 11.42 & economía, desarrollo, crecimiento, recursos, país, sector, gobierno, política, fiscal, innovación \\
+				2  & 0.782987 & 9.61  & educación, universidad, formación, universidades, estudiantes, nacional, calidad, investigación, conocimiento, superior \\
+				4  & 0.784604 & 6.56  & ambiental, ambientales, conservación, ambiente, biodiversidad, sostenible, desarrollo, deforestación, bosques, ecosistemas \\
+				5  & 0.799532 & 4.79  & climático, cambio, planeta, global, calentamiento, incendios, mundo, climática, clima, temperatura \\
+				8  & 0.504077 & 2.79  & datos, información, encuestas, acceso, transparencia, resultados, personas, medios, ejemplo, pública \\
+				7  & 0.686045 & 2.75  & agua, río, aguas, lluvia, ríos, cauca, barrios, obras, bogotá, país \\
+				9  & 0.919135 & 2.02  & energía, combustibles, fósiles, energías, carbón, renovables, solar, energética, petróleo, gas \\
+				10 & 0.724657 & 1.83  & mujeres, hombres, mujer, género, femenino, violencia, personas, vida, femenina, sexo \\
+				\hline
+			\end{tabularx}
+			\caption{Top tópicos de BERTopic con coherencia por tópico ($c_v$), porcentaje de documentos y palabras representativas, específico para menciones a ciencia}
+			\label{tab:topics_ciencia}
+		\end{table}
+		
+		
+		
+	\subsection{Análisis de vocabulario con POS-tagging}
+Se obtuvieron los verbos, adjetivos y sustantivos de los textos y se contaron sus frecuencias. Mediante POS-tagging se identificaron aproximadamente 10 mil verbos, 18 mil adjetivos y 30 mil sustantivos. El verbo más frecuente en todo el corpus es \textit{tener}, el adjetivo más frecuente es \textit{social} y el sustantivo más frecuente es \textit{país}. En el subconjunto de fragmentos con menciones a la ciencia, estas palabras siguen siendo las más frecuentes.
+
+A continuación, resulta importante observar de manera proporcional cuáles ocurren con mayor frecuencia en el subcorpus de ciencia. Como se mencionó en la sección \ref{sec:ident_menciones}, se identificó como menciones a la ciencia el 11.6\% de los fragmentos. Por lo tanto, es relevante analizar las palabras que ocurren en una proporción superior a ese valor y que, además, son frecuentes en el corpus general.
+
+En el caso de los verbos, aproximadamente 2500 ocurren con una proporción mayor al 11.6\%; en el caso de los adjetivos, son alrededor de 5 mil, y en el de los sustantivos, cerca de 8 mil. Muchas de estas palabras son poco frecuentes en el corpus, entonces se eligió un valor mínimo (por ejemplo al menos 50 apariciones en ciencia) por categoría gramatical. Tambiem se filtró con una proporción del 30\% en frecuencia de ciencia sobre frecuencia total.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lrrr}
+		\toprule
+		\textbf{Verbo} & \textbf{Frecuencia total} & \textbf{Frecuencia ciencia} & \textbf{Proporción ciencia} \\
+		\midrule
+		articular     & 175 & 79 & 0.45 \\
+		mitigar       & 208 & 68 & 0.33 \\
+		contaminar    & 200 & 63 & 0.32 \\
+		gestionar     & 188 & 57 & 0.30 \\
+		actualizar    & 122 & 37 & 0.30 \\
+		deforestar    & 67  & 26 & 0.39 \\
+		posibilitar   & 77  & 24 & 0.31 \\
+		apalancar     & 54  & 22 & 0.41 \\
+		planificar    & 43  & 20 & 0.47 \\
+		capacitar     & 46  & 20 & 0.43 \\
+		dinamizar     & 62  & 20 & 0.32 \\
+		armonizar     & 47  & 19 & 0.40 \\
+		maximizar     & 62  & 19 & 0.31 \\
+		optimizar     & 39  & 18 & 0.46 \\
+		cuantificar   & 47  & 18 & 0.38 \\
+		almacenar     & 47  & 18 & 0.38 \\
+		talar         & 39  & 17 & 0.44 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Frecuencia y proporción de verbos en el subcorpus de ciencia}
+	\label{tab:verbos_ciencia}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lrrr}
+		\toprule
+		\textbf{Adjetivo} & \textbf{Frecuencia total} & \textbf{Frecuencia ciencia} & \textbf{Proporción ciencia} \\
+		\midrule
+		ecosistémico & 65   & 53  & 0.82 \\
+		invernadero  & 100  & 68  & 0.68 \\
+		silvestre    & 133  & 81  & 0.61 \\
+		hídrico      & 107  & 65  & 0.61 \\
+		forestal     & 173  & 105 & 0.61 \\
+		ambiental    & 1530 & 910 & 0.59 \\
+		climático    & 984  & 584 & 0.59 \\
+		renovable    & 149  & 84  & 0.56 \\
+		fósil        & 196  & 110 & 0.56 \\
+		ecológico    & 322  & 180 & 0.56 \\
+		científico   & 959  & 507 & 0.53 \\
+		energético   & 227  & 119 & 0.52 \\
+		biológico    & 183  & 87  & 0.48 \\
+		sostenible   & 744  & 342 & 0.46 \\
+		animal       & 188  & 84  & 0.45 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Frecuencia y proporción de adjetivos en el subcorpus de ciencia}
+	\label{tab:adjetivos_ciencia}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lrrr}
+		\toprule
+		\textbf{Sustantivo} & \textbf{Frecuencia total} & \textbf{Frecuencia ciencia} & \textbf{Proporción ciencia} \\
+		\midrule
+		agua          & 2586 & 971 & 0.38 \\
+		ciencia       & 1575 & 858 & 0.54 \\
+		conocimiento  & 1753 & 665 & 0.38 \\
+		tecnología    & 1547 & 622 & 0.40 \\
+		naturaleza    & 1537 & 480 & 0.31 \\
+		impacto       & 1419 & 462 & 0.33 \\
+		formación     & 1124 & 412 & 0.37 \\
+		ambiente      & 1256 & 398 & 0.32 \\
+		gestión       & 1164 & 380 & 0.33 \\
+		planeta       & 1207 & 379 & 0.31 \\
+		energía       & 968  & 363 & 0.38 \\
+		innovación    & 604  & 333 & 0.55 \\
+		bosque        & 701  & 326 & 0.47 \\
+		bienestar     & 1051 & 321 & 0.31 \\
+		área          & 1037 & 314 & 0.30 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Frecuencia y proporción de sustantivos en el subcorpus de ciencia}
+	\label{tab:sustantivos_ciencia}
+\end{table}
 
 	
 	\section{Discusión}
@@ -680,6 +871,7 @@
 		\item Los sustantivos dominantes serán más sociales/políticos que científicos (“política”, “salud”, “educación”, “economía”, “gobierno”).
 		
 		\item La aparición de ciencia se concentrará en pocos autores especializados o con agenda temática clara.
+
 
 	\end{itemize}
 

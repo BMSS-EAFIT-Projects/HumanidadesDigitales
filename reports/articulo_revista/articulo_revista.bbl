@@ -123,6 +123,12 @@ Qi, P., Zhang, Y., Zhang, Y., Bolton, J., and Manning, C.~D. (2020b).
 \newblock Stanza: A python natural language processing toolkit for many human
   languages.
 
+\bibitem[R\"{o}der et~al., 2015]{Rder2015}
+R\"{o}der, M., Both, A., and Hinneburg, A. (2015).
+\newblock Exploring the space of topic coherence measures.
+\newblock In {\em Proceedings of the Eighth ACM International Conference on Web
+  Search and Data Mining}, WSDM 2015, page 399–408. ACM.
+
 \bibitem[Santillán-García et~al., 2021]{SantillnGarca2021}
 Santillán-García, A., Oliver, E., Grigorian~Shamagian, L., Climent, A.~M.,
   and Melchor, L. (2021).
