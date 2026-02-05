@@ -8,45 +8,45 @@ Database file #1: references.bib
 Warning--there's a number but no volume in CaroLopera2020
 Warning--empty journal in Grootendorst2022
 Warning--empty publisher in Jurafsky2025
-You've used 28 entries,
+You've used 30 entries,
             1935 wiz_defined-function locations,
-            652 strings with 13973 characters,
-and the built_in function-call counts, 17857 in all, are:
-= -- 1526
-> -- 1545
-< -- 13
-+ -- 597
-- -- 586
-* -- 1778
-:= -- 3219
-add.period$ -- 82
-call.type$ -- 28
-change.case$ -- 433
-chr.to.int$ -- 27
-cite$ -- 31
-duplicate$ -- 446
-empty$ -- 761
-format.name$ -- 622
-if$ -- 3295
+            663 strings with 14319 characters,
+and the built_in function-call counts, 18681 in all, are:
+= -- 1602
+> -- 1585
+< -- 14
++ -- 611
+- -- 600
+* -- 1855
+:= -- 3367
+add.period$ -- 88
+call.type$ -- 30
+change.case$ -- 450
+chr.to.int$ -- 29
+cite$ -- 33
+duplicate$ -- 473
+empty$ -- 816
+format.name$ -- 638
+if$ -- 3451
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 21
-newline$ -- 137
-num.names$ -- 84
-pop$ -- 416
+missing$ -- 23
+newline$ -- 147
+num.names$ -- 90
+pop$ -- 428
 preamble$ -- 1
-purify$ -- 432
+purify$ -- 449
 quote$ -- 0
-skip$ -- 350
+skip$ -- 372
 stack$ -- 0
-substring$ -- 742
-swap$ -- 82
+substring$ -- 799
+swap$ -- 84
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 166
+type$ -- 178
 warning$ -- 3
-while$ -- 77
+while$ -- 82
 width$ -- 0
-write$ -- 350
+write$ -- 376
 (There were 3 warnings)

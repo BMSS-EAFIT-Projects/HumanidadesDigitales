@@ -15,6 +15,12 @@ Chai, C.~P. (2022).
 \newblock Comparison of text preprocessing methods.
 \newblock {\em Natural Language Engineering}, 29(3):509–553.
 
+\bibitem[Chakravartty, 2022]{Chakravartty2022}
+Chakravartty, A. (2022).
+\newblock Scientific knowledge vs. knowledge of science: Public understanding
+  and science in society.
+\newblock {\em Science &amp; Education}, 32(6):1795–1812.
+
 \bibitem[Chiche and Yitagesu, 2022]{Chiche2022}
 Chiche, A. and Yitagesu, B. (2022).
 \newblock Part of speech tagging: a systematic review of deep learning and
@@ -72,6 +78,11 @@ Grootendorst, M. (2022).
 He, Z., Wang, Z., Wei, W., Feng, S., Mao, X., and Jiang, S. (2020).
 \newblock A survey on recent advances in sequence labeling from deep learning
   models.
+
+\bibitem[Hosna et~al., 2022]{Hosna2022}
+Hosna, A., Merry, E., Gyalmo, J., Alom, Z., Aung, Z., and Azim, M.~A. (2022).
+\newblock Transfer learning: a friendly introduction.
+\newblock {\em Journal of Big Data}, 9(1).
 
 \bibitem[Jehangir et~al., 2023]{Jehangir2023}
 Jehangir, B., Radhakrishnan, S., and Agarwal, R. (2023).
