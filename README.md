@@ -5,8 +5,8 @@ Este trabajo se enmarca en el proyecto Arte, Ciencia y Tecnología en la esfera 
 
 ### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/kmgomezm/analisis_columnas_opinion.git
-cd analisis_columnas_opinion
+git clone https://github.com/BMSS-EAFIT-Projects/HumanidadesDigitales_Karen.git
+cd HumanidadesDigitales_Karen
 ```
 
 ### 2. Crear un entorno virtual
