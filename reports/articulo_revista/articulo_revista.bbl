@@ -19,7 +19,7 @@ Chai, C.~P. (2022).
 Chakravartty, A. (2022).
 \newblock Scientific knowledge vs. knowledge of science: Public understanding
   and science in society.
-\newblock {\em Science &amp; Education}, 32(6):1795–1812.
+\newblock {\em Science \& Education}, 32(6):1795–1812.
 
 \bibitem[Chiche and Yitagesu, 2022]{Chiche2022}
 Chiche, A. and Yitagesu, B. (2022).
@@ -45,12 +45,6 @@ Daza-Caicedo, S., Lozano-Borda, M., Castellanos, E. M.~B., Gómez-Morales,
   resultados de la iii encuesta nacional de percepción pública de la ciencia
   y la tecnología.
 \newblock Technical report, Observatorio Colombiano de Ciencia y Tecnología.
-
-\bibitem[Donois et~al., 2025]{Donois2025}
-Donois, K.~K., Goodings, L., Finlay, M., and Gibson, N. (2025).
-\newblock Contested science communication: Representations of scientists and
-  their science in newspaper articles and the associated comment sections.
-\newblock {\em Public Understanding of Science}, 34(6):810–828.
 
 \bibitem[Enevoldsen et~al., 2025]{enevoldsen2025mmtebmassivemultilingualtext}
 Enevoldsen, K., Chung, I., Kerboua, I., Kardos, M., Mathur, A., Stap, D., Gala,
@@ -112,15 +106,11 @@ Orellana, G., Arias, B., Orellana, M., Saquicela, V., Baculima, F., and Piedra,
 \newblock In {\em 2018 International Conference on Information Systems and
   Computer Science (INCISCOS)}, page 277–283. IEEE.
 
-\bibitem[Pe’er et~al., 2025]{Peer2025}
-Pe’er, G., Kachler, J., Herzon, I., Hering, D., Arponen, A., Bosco, L.,
-  Bruelheide, H., Finch, E.~A., Friedrichs‐Manthey, M., Hagedorn, G.,
-  Hansj\"{u}rgens, B., Ladouceur, E., Lakner, S., Liquete, C.,
-  López‐Hoffman, L., Pinto, I.~S., Robuchon, M., Selva, N., Settele, J.,
-  Sirami, C., van Dam, N.~M., Wittmer, H., and Bonn, A. (2025).
-\newblock Role of science and scientists in public environmental policy
-  debates: The case of eu agrochemical and nature restoration regulations.
-\newblock {\em People and Nature}, 7(8):1772–1788.
+\bibitem[{Python Software Foundation}, 2023]{python3127}
+{Python Software Foundation} (2023).
+\newblock Python 3.12.7.
+\newblock Available at: https://www.python.org/downloads/. Version 3.12.7.
+  Accessed: July 2025.
 
 \bibitem[Qi et~al., 2020a]{qi2020stanza}
 Qi, P., Zhang, Y., Zhang, Y., Bolton, J., and Manning, C.~D. (2020a).
@@ -139,13 +129,6 @@ R\"{o}der, M., Both, A., and Hinneburg, A. (2015).
 \newblock Exploring the space of topic coherence measures.
 \newblock In {\em Proceedings of the Eighth ACM International Conference on Web
   Search and Data Mining}, WSDM 2015, page 399–408. ACM.
-
-\bibitem[Santillán-García et~al., 2021]{SantillnGarca2021}
-Santillán-García, A., Oliver, E., Grigorian~Shamagian, L., Climent, A.~M.,
-  and Melchor, L. (2021).
-\newblock \#{CienciaenelParlamento}: la necesidad de una oficina parlamentaria
-  de asesoramiento científico y tecnológico.
-\newblock {\em Gaceta Sanitaria}, 35(3):293–297.
 
 \bibitem[Siino et~al., 2024]{Siino2024}
 Siino, M., Tinnirello, I., and La~Cascia, M. (2024).

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  6 FEB 2026 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  17 FEB 2026 01:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -793,191 +793,156 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 {C:/Users/karen/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/kare
 n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
-<figures/diagrama_paper_ciencia.png, id=133, 985.6825pt x 181.67876pt>
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 95.
+<figures/diagrama_paper_ciencia.png, id=136, 985.6825pt x 181.67876pt>
 File: figures/diagrama_paper_ciencia.png Graphic file (type png)
 <use figures/diagrama_paper_ciencia.png>
 Package pdftex.def Info: figures/diagrama_paper_ciencia.png  used on input line
- 101.
+ 100.
 (pdftex.def)             Requested size: 452.9679pt x 83.49007pt.
 
 
 [2 <./figures/diagrama_paper_ciencia.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 116.
+(Font)              <9> on input line 115.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 116.
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
-
- []
-
+(Font)              <5> on input line 115.
 
 
 [3]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-57.
+63.
  (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 175--175
+Underfull \hbox (badness 10000) in paragraph at lines 181--181
 []|\T1/lmr/m/n/9 (+20) Administración de la
  []
 
-[4{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 
 
-[5]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 235.
+[4]
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--245
-
- []
+[5{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 
 
+[6]
 
-[6{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
+[7{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
 :/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
 :/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C
 :/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
 
-[7]
-
 [8]
-<figures/distribucion_scores.png, id=248, 578.16pt x 361.35pt>
-File: figures/distribucion_scores.png Graphic file (type png)
-<use figures/distribucion_scores.png>
-Package pdftex.def Info: figures/distribucion_scores.png  used on input line 35
-6.
-(pdftex.def)             Requested size: 217.42265pt x 135.88637pt.
-<figures/accuracy_umbral.png, id=249, 578.16pt x 361.35pt>
+<figures/accuracy_umbral.png, id=228, 578.16pt x 361.35pt>
 File: figures/accuracy_umbral.png Graphic file (type png)
 <use figures/accuracy_umbral.png>
-Package pdftex.def Info: figures/accuracy_umbral.png  used on input line 363.
+Package pdftex.def Info: figures/accuracy_umbral.png  used on input line 317.
 (pdftex.def)             Requested size: 217.42265pt x 135.88637pt.
 
-Overfull \hbox (9.82343pt too wide) in alignment at lines 375--380
- [] [] [] 
- []
 
-
-Overfull \hbox (9.82343pt too wide) in alignment at lines 380--386
- [] [] [] 
- []
-
-
-Overfull \hbox (9.82343pt too wide) in alignment at lines 386--389
- [] [] [] 
- []
-
-
-Overfull \hbox (9.82343pt too wide) in alignment at lines 389--392
- [] [] [] 
- []
-
-
-Overfull \hbox (9.82343pt too wide) in alignment at lines 392--413
- [] [] [] 
- []
-
-
-
-[9 <./figures/distribucion_scores.png> <./figures/accuracy_umbral.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
-
- []
-
-
+[9 <./figures/accuracy_umbral.png>]
 
 [10]
-<figures/nube_general.png, id=267, 722.7pt x 578.16pt>
-File: figures/nube_general.png Graphic file (type png)
-<use figures/nube_general.png>
-Package pdftex.def Info: figures/nube_general.png  used on input line 474.
-(pdftex.def)             Requested size: 217.42265pt x 173.93454pt.
-<figures/nube_ciencia.png, id=268, 722.7pt x 578.16pt>
-File: figures/nube_ciencia.png Graphic file (type png)
-<use figures/nube_ciencia.png>
-Package pdftex.def Info: figures/nube_ciencia.png  used on input line 481.
-(pdftex.def)             Requested size: 217.42265pt x 173.93454pt.
+Overfull \hbox (9.82343pt too wide) in alignment at lines 392--397
+ [] [] [] 
+ []
+
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 397--403
+ [] [] [] 
+ []
+
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 403--406
+ [] [] [] 
+ []
+
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 406--409
+ [] [] [] 
+ []
+
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 409--430
+ [] [] [] 
+ []
+
 
 
 [11]
-<figures/porcentaje_mensual_ciencia_linea.png, id=275, 1004.7939pt x 427.1157pt
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
+
+ []
+
+
+
+[12]
+<figures/nube_general.png, id=276, 722.7pt x 578.16pt>
+File: figures/nube_general.png Graphic file (type png)
+<use figures/nube_general.png>
+Package pdftex.def Info: figures/nube_general.png  used on input line 491.
+(pdftex.def)             Requested size: 217.42265pt x 173.93454pt.
+<figures/nube_ciencia.png, id=277, 722.7pt x 578.16pt>
+File: figures/nube_ciencia.png Graphic file (type png)
+<use figures/nube_ciencia.png>
+Package pdftex.def Info: figures/nube_ciencia.png  used on input line 498.
+(pdftex.def)             Requested size: 217.42265pt x 173.93454pt.
+
+
+[13]
+<figures/porcentaje_mensual_ciencia_linea.png, id=285, 1004.7939pt x 427.1157pt
 >
 File: figures/porcentaje_mensual_ciencia_linea.png Graphic file (type png)
 <use figures/porcentaje_mensual_ciencia_linea.png>
 Package pdftex.def Info: figures/porcentaje_mensual_ciencia_linea.png  used on 
-input line 493.
+input line 513.
 (pdftex.def)             Requested size: 430.31812pt x 182.91972pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
-
- []
-
-
-Underfull \hbox (badness 1990) in paragraph at lines 524--525
+Underfull \hbox (badness 1990) in paragraph at lines 544--545
 []|\T1/lmr/m/n/9 (+20) Activista am-bien-tal sue-ca, si-glo
  []
 
 
-Overfull \hbox (22.44203pt too wide) in paragraph at lines 512--533
+Overfull \hbox (22.44203pt too wide) in paragraph at lines 532--553
  [][] 
  []
 
 
 
-[12 <./figures/nube_general.png> <./figures/nube_ciencia.png> <./figures/porcen
+[14 <./figures/nube_general.png> <./figures/nube_ciencia.png> <./figures/porcen
 taje_mensual_ciencia_linea.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 552--552
+Underfull \hbox (badness 10000) in paragraph at lines 572--572
 []|\T1/lmr/m/n/9 (+20) Pontificia Uni-ver-si-
  []
 
 
-Underfull \hbox (badness 5133) in paragraph at lines 555--555
+Underfull \hbox (badness 5133) in paragraph at lines 575--575
 []|\T1/lmr/m/n/9 (+20) Ministerio de Am-
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 555--555
+Underfull \hbox (badness 1383) in paragraph at lines 575--575
 \T1/lmr/m/n/9 (+20) bien-te y De-sa-rro-llo
  []
 
 
-Overfull \hbox (22.44203pt too wide) in paragraph at lines 541--563
+Overfull \hbox (22.44203pt too wide) in paragraph at lines 561--583
  [][] 
  []
 
 
-Underfull \hbox (badness 5161) in paragraph at lines 584--584
+Underfull \hbox (badness 5161) in paragraph at lines 604--604
 []|\T1/lmr/m/n/9 (+20) Parques Na-cio-na-les
  []
 
 
-Overfull \hbox (22.44203pt too wide) in paragraph at lines 570--589
+Overfull \hbox (22.44203pt too wide) in paragraph at lines 590--609
  [][] 
  []
 
 
-
-[13]
-
-[14]
 
 [15]
 
@@ -988,30 +953,29 @@ Overfull \hbox (22.44203pt too wide) in paragraph at lines 570--589
 [18]
 
 [19]
-Overfull \hbox (20.47116pt too wide) in paragraph at lines 810--812
+
+[20]
+
+[21]
+Overfull \hbox (20.47116pt too wide) in paragraph at lines 836--838
 []\T1/lmr/m/n/10.95 (-20) Enlace a re-po-si-to-rio (GitHub/OSF/Zenodo), scripts
 , ver-sión de pa-que-tes y \T1/lmr/m/it/10.95 (-20) con-tei-ner \T1/lmr/m/n/10.
 95 (-20) (\T1/lmtt/m/n/10.95 Dockerfile\T1/lmr/m/n/10.95 (-20) )
  []
 
 (articulo_revista.bbl
-! Misplaced alignment tab character &.
-l.22 \newblock {\em Science &
-                             amp; Education}, 32(6):1795â€“1812.
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
+[]\T1/lmr/m/n/10.95 (+20) Python Soft-wa-re Foun-da-tion (2023).  Python 3.12.7
+.  Avai-la-ble at:
+ []
 
 
 
-[20]
+[23])
 
-[21])
-
-[22] (articulo_revista.aux
+[24] (articulo_revista.aux
 LaTeX Info: Redefining \. on input line 19.
 LaTeX Info: Redefining \% on input line 19.
 )
@@ -1023,13 +987,13 @@ Package rerunfilecheck Info: File `articulo_revista.out' has not changed.
 (rerunfilecheck)             Checksum: DB549DB3585011FF6ACCA2D1E14FD82C;4565.
  ) 
 Here is how much of TeX's memory you used:
- 22969 strings out of 469959
- 445244 string characters out of 5469834
- 860637 words of memory out of 5000000
- 49096 multiletter control sequences out of 15000+600000
- 737391 words of font info for 247 fonts, out of 8000000 for 9000
+ 22964 strings out of 469959
+ 444892 string characters out of 5469834
+ 860391 words of memory out of 5000000
+ 49082 multiletter control sequences out of 15000+600000
+ 739706 words of font info for 256 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,80p,1234b,1292s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,80p,1530b,1272s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb
@@ -1037,17 +1001,21 @@ b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb
 ><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb
 ><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb>
 <C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><
-C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C
-:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:
-/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/
-Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Us
-ers/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/User
-s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/User
-s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/User
-s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on articulo_revista.pdf (22 pages, 6206137 bytes).
+C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb>
+<C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><
+C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C
+:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:
+/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/U
+sers/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Use
+rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Use
+rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Use
+rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/User
+s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/User
+s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
+0.pfb>
+Output written on articulo_revista.pdf (24 pages, 6142939 bytes).
 PDF statistics:
- 447 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
- 62679 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 470 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 500000)
+ 62674 words of extra memory for PDF output out of 74296 (max. 10000000)
 
