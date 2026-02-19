@@ -34,13 +34,16 @@
 \usepackage{float}
 \usepackage{subcaption}
 
-% --- Bibliografía con biblatex (APA) ---
-\usepackage[backend=biber, 
-	style=apa,           % Estilo APA
-	natbib=true,         % Compatibilidad con comandos \citep
-	maxcitenames=2, 
-	maxbibnames=99]{biblatex}
-\addbibresource{references.bib} 
+% --- Bibliografía con biblatex (MLA) ---
+\usepackage{mla}
+\usepackage[backend=biber,
+style=mla,
+showmedium=false,
+autocite=inline]{biblatex}
+
+\addbibresource{references.bib}
+\ExecuteBibliographyOptions{citetracker=true}
+
 
 % --- Comandos útiles ---
 %\newcommand{\keywords}[1]{\par\noindent\textbf{Palabras clave —} #1}
@@ -48,6 +51,7 @@
 \newcommand{\JEL}[1]{\par\noindent\textbf{Clasificación —} #1}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
+\setcounter{secnumdepth}{0}
 
 \usepackage{microtype} % Mejora el espaciado
 \setlength{\emergencystretch}{3em} % Permite más flexibilidad
@@ -108,7 +112,7 @@
 		\label{fig:diagramaflujo}
 	\end{figure}
 	
-	\subsection{Data collection}
+	\subsection{Data Collection}
 	A total of 13,000 opinion columns were collected from three widely circulated Colombian print media outlets. These columns were published between January 2018 and December 2020. At this stage, the only selection criterion was that the column consist entirely of written text and not require video or audio to understand its content. The columns were not selected based on any specific topic. For each opinion column, the following metadata were collected: the name of the newspaper, the author, the date, the title, the full text (body) of the column, and the URL. Each text was verified to ensure uniqueness (i.e., no duplicated columns), and author names were standardized. After this process, a unique identification number was assigned to each opinion column.
 	
 	\begin{table}[H]
@@ -140,7 +144,7 @@
 		Finally, the process included lemmatization, that is, the reduction of words to their canonical or base form. This standardization makes it possible to group morphological variants under a single lexical entry—for example, converting conjugated verbs to the infinitive or transforming plural nouns into the singular—which is crucial for frequency analyses and lexical studies (\cite{Orellana2018}). The selection of the lemmatization model required particular attention. In an initial stage, the lemmatizer from the spaCy library in Python was used, whose main advantage is speed; however, limitations in accuracy for Spanish were observed. For this reason, the Stanford Stanza library model (\cite{qi2020stanza}), based on neural networks, was ultimately adopted, as it provided greater accuracy in lemma identification. Lemmatization was applied prior to lexical analysis and part-of-speech (POS) tagging, thereby ensuring a more consistent representation of the corpus vocabulary.
 
 	
-	\subsection{Identification of references to science}
+	\subsection{Identification of References to Science}
 	
 	
 To advance the objective of this study—namely, to understand how science is represented in opinion discourse in Colombia—it was necessary to systematically identify references associated with the scientific field within the previously described corpus. To this end, a strategy based on semantic search was designed. Semantic search is an information retrieval method that enables the identification of meaning-based relationships beyond the literal matching of keywords (\cite{Wei2022}). Unlike traditional lexical search, this approach retrieves texts according to their conceptual proximity, incorporating phenomena such as synonymy, terminological variation, and semantic affinity among expressions.
@@ -152,7 +156,7 @@ Once these vectors were obtained, semantic similarity between each corpus fragme
 
 As a result, it was possible not only to identify which scientific field categories exhibit greater relative presence within the opinion corpus, but also to retrieve specific column fragments classified according to the category with which they display the greatest semantic proximity. These fragments constitute the basis for the subsequent qualitative analysis, in which discursive patterns associated with the scientific areas registering the highest semantic intensity in the Colombian public sphere are examined.
 	
-\subsubsection{Definition of science: UNESCO thesaurus}
+\subsubsection{Definition of Science: UNESCO Thesaurus}
 
 The words used to represent science were those included in the UNESCO Thesaurus. The UNESCO Thesaurus ``is a controlled and structured list of terms for subject analysis and the retrieval of documents and publications in the fields of education, culture, natural sciences, social and human sciences, communication, and information''(\cite{unesco_thesaurus_1977}). Its first English version was published in 1977, and it is periodically revised and updated. For the purposes of this study, the list specifically labeled Science, specialized in the natural sciences, was used. The Spanish-language version of this list was employed for the analysis. This list made it possible to approach science through the words that compose it or are used to identify it across different areas. The category comprises 17 subcategories, each containing between 24 and 84 terms. For reference, a table including the first terms of each category is presented in Table \ref{tab:categorias_ciencia}.
 
@@ -215,7 +219,7 @@ The words used to represent science were those included in the UNESCO Thesaurus.
 }
 
 
-	\subsubsection{Embedding model selection}
+	\subsubsection{Embedding Model Selection}
 For this study, a pre-trained embeddings model was selected. This means that the model had been previously developed and trained on large volumes of textual data, enabling it to capture complex semantic relationships without requiring retraining from scratch. This strategy is grounded in the framework of transfer learning, whereby a model trained on a general task can be effectively reused in different contexts (\cite{Hosna2022}). In this way, the corpus of opinion columns could be analyzed by leveraging previously acquired linguistic knowledge, thereby reducing computational costs and development time.
 
 The selection of the embeddings model required consideration of several key criteria. First, the model needed to be optimized for semantic similarity tasks, since the central objective was to measure the conceptual proximity between corpus fragments and the UNESCO Thesaurus categories for Science. Second, it had to provide robust support for the Spanish language, given that the analyzed corpus consists of opinion columns published in Colombia. Finally, the model’s size—understood in terms of the number of parameters and memory requirements—was evaluated, ensuring that it did not exceed 500 million parameters in order to maintain computational feasibility.
@@ -229,7 +233,7 @@ Subsequently, a representative embedding was computed for each fragment of the c
 Finally, semantic similarity between each corpus fragment and each Thesaurus subcategory was estimated by calculating cosine similarity, with the aim of identifying the degree of conceptual proximity between them. The following section provides a more detailed explanation of the mathematical foundations of cosine similarity and its interpretation in the context of this analysis.
 
 	
-	\subsubsection{Cosine similarity}
+	\subsubsection{Cosine Similarity}
 	
 	Once both the corpus fragments and the UNESCO Thesaurus subcategories had been represented within the same vector space through embeddings, it was necessary to define a metric to quantify their semantic proximity. The measure used to evaluate similarity between the encoded texts was cosine similarity, one of the most widely employed metrics in information retrieval and natural language processing (\cite{Jurafsky2025}).
 	
@@ -248,7 +252,7 @@ Finally, semantic similarity between each corpus fragment and each Thesaurus sub
 	In the procedure implemented in this study, for each corpus fragment $\mathbf{u}$, cosine similarity was computed with each of the 17 vectors $\mathbf{v}$ corresponding to the Thesaurus categories. This yielded, for every fragment, a set of 17 semantic affinity scores. The category assigned to a given fragment was the one with the highest similarity value. In this way, each chunk of the opinion columns was classified according to the scientific field with which it exhibits the greatest conceptual proximity.
 	
 
-	\subsubsection{Selection threshold}
+	\subsubsection{Selection Threshold}
 
 Once the full corpus of opinion columns had been segmented, a total of $m = 62{,}651$ fragments (chunks) were obtained. Each of these fragments was represented by an embedding and compared with the $n = 17$ vectors corresponding to the UNESCO Thesaurus categories for Science. Accordingly, the index $i$ ranges over the corpus fragments ($i = 1, \dots, 62{,}651$), and the index $j$ ranges over the Thesaurus categories ($j = 1, \dots, 17$).
 
@@ -324,7 +328,7 @@ With the selected threshold, the procedure was applied to the full set of $62{,}
 \end{figure}
 
 
-\subsection{Descriptive and exploratory analyses of the text}
+\subsection{Descriptive and Exploratory Analyses of the Text}
 	
 	
 	To characterize the corpus and establish an appropriate foundation for subsequent analyses, a general descriptive procedure was conducted through the calculation of various statistics. These included the total number of words, the number of unique words, as well as the maximum and minimum document length per column. Such indicators make it possible to assess the structure and scope of the text collection prior to advancing toward more specific analyses.
@@ -335,7 +339,7 @@ With the selected threshold, the procedure was applied to the full set of $62{,}
 	
 	
 	
-	\subsection{Entity analysis – NER}
+	\subsection{Entity Analysis – NER}
 	
 	
 	Named Entity Recognition (NER) is a natural language processing task that consists of identifying entities mentioned in a text and classifying them into predefined categories (e.g., persons, locations, or organizations) (\cite{Jehangir2023}). This process plays a fundamental role in a wide range of applications, including social network analysis, semantic annotation, machine translation, question answering systems, automatic text summarization, document classification, spam detection, and opinion mining (\cite{Jehangir2023}).
@@ -346,7 +350,7 @@ With the selected threshold, the procedure was applied to the full set of $62{,}
 	
 	
 	
-	\subsection{Analysis of topics}\label{sec:topic_model}
+	\subsection{Analysis of Topics}\label{sec:topic_model}
 	
 	
 	Once the science-related mentions had been identified and the corresponding subcorpus constructed, topic modeling was conducted in order to infer the latent thematic structures present in both the general corpus and the science subcorpus. Topic modeling comprises a set of unsupervised methods aimed at discovering recurrent semantic patterns within a collection of documents (\cite{Abdelrazek2023}). Conceptually, these methods seek to model three fundamental entities: the document collection, the latent topics, and the constructs that compose them. In this context, the constructs correspond to the lexical units (words or terms) that make up the analyzed fragments.
@@ -403,7 +407,7 @@ At the document level, 4\,154 columns contain at least one effective mention of 
 		\begin{longtable}{p{7cm}P{4cm}P{4cm}}
 			\caption{Number of fragments with mentions of science and percentage of the total by category} \label{tab:res_fragmentos_subcategoria}\\
 			\toprule
-			\textbf{Subcategory} & \textbf{Number of fragments} & \textbf{Percentage of total} \\
+			\textbf{Category} & \textbf{Number of fragments} & \textbf{Percentage of total} \\
 			\midrule
 			\endfirsthead
 			
@@ -441,27 +445,27 @@ At the document level, 4\,154 columns contain at least one effective mention of 
 		\end{longtable}
 	}
 	
-	Below are some examples of the selected fragments. These were translated by the authors from Spanish (the original language) into English. They will be available in their original language in the supplementary material.
+	%Below are some examples of the selected fragments. These were translated by the authors from Spanish (the original language) into English. They will be available in their original language in the supplementary material.
 	
-	From the category Science and research management:
+	%From the category Science and research management:
 	
-	\begin{quote}
-		(...) separately. The Ministry of Science, Technology and Innovation bears the responsibility of convening the formation of a National Innovation System whose purpose is to develop the roadmap set forth by the Mission of Sages, aligning all actors at the local, regional and national levels. Knowledge is always a collective achievement. Faced with the challenges we confront as a country, it is necessary that we collectively assume, all actors together, the challenge of managing knowledge, learning continuously, in order to place it at the service of communities. To overcome the crisis and achieve structural transformations, planning and medium- to long-term work are required, where everyone contributes without thinking only of immediate gains. A system in which art, the humanities, technology, and the social and exact sciences, as expressions of knowledge, become part of the daily life of Colombians demands that we stop acting (...)
+	%\begin{quote}
+	%	(...) separately. The Ministry of Science, Technology and Innovation bears the responsibility of convening the formation of a National Innovation System whose purpose is to develop the roadmap set forth by the Mission of Sages, aligning all actors at the local, regional and national levels. Knowledge is always a collective achievement. Faced with the challenges we confront as a country, it is necessary that we collectively assume, all actors together, the challenge of managing knowledge, learning continuously, in order to place it at the service of communities. To overcome the crisis and achieve structural transformations, planning and medium- to long-term work are required, where everyone contributes without thinking only of immediate gains. A system in which art, the humanities, technology, and the social and exact sciences, as expressions of knowledge, become part of the daily life of Colombians demands that we stop acting (...)
 		
-		- \cite{montoya2020conocimiento} [fragment translated by the authors].
-	\end{quote}
+	%	- \cite{montoya2020conocimiento} [fragment translated by the authors].
+	%\end{quote}
 	
-	From the category Environmental sciences and engineering:
-	\begin{quote}
-		(...) environmental and climate justice. 4. Articulate sustainable development goals and the post-conflict 2030 agenda, focusing on renewable energy, multimodal transport, green building, permaculture, self-consumption, and resilient water territories. 5. Redefine the urban-rural relationship, emphasizing ecosystem restoration and conservation, equity, solidarity, shared responsibility, and identity. 6. Review the mining and energy model, adjusting it to environmental land use planning, refrain from building new hydroelectric megaprojects, reject the use of fracking, and transition to alternative renewable energies. 7. Promote comprehensive education and the democratization of information and knowledge as instruments for peacebuilding, respecting utopias and cultural and natural diversity. 8. Strengthen scientific research, innovation, and other modes of knowledge construction as means to improve understanding of ecological, climatic, and cultural realities. 9. Recognize nature as a victim of the armed conflict and the Colombian development model, and, for (...)
-		- \cite{ruiz2018siambiental} [fragment translated by the authors].
-	\end{quote}
+	%From the category Environmental sciences and engineering:
+	%\begin{quote}
+	%	(...) environmental and climate justice. 4. Articulate sustainable development goals and the post-conflict 2030 agenda, focusing on renewable energy, multimodal transport, green building, permaculture, self-consumption, and resilient water territories. 5. Redefine the urban-rural relationship, emphasizing ecosystem restoration and conservation, equity, solidarity, shared responsibility, and identity. 6. Review the mining and energy model, adjusting it to environmental land use planning, refrain from building new hydroelectric megaprojects, reject the use of fracking, and transition to alternative renewable energies. 7. Promote comprehensive education and the democratization of information and knowledge as instruments for peacebuilding, respecting utopias and cultural and natural diversity. 8. Strengthen scientific research, innovation, and other modes of knowledge construction as means to improve understanding of ecological, climatic, and cultural realities. 9. Recognize nature as a victim of the armed conflict and the Colombian development model, and, for (...)
+	%	- \cite{ruiz2018siambiental} [fragment translated by the authors].
+	%\end{quote}
 	
-	From the category Mathematics and statistics:
-	\begin{quote}
-		(...) science aspires to economic models, to reducing everything to a small theoretical body from which its basic corollaries can be deduced directly. In mathematics, for example, a short, arithmetic proof is more beautiful than a longer one that must resort to calculation to prove the same thing. All geometries are developed from a handful of elementary postulates. Physicists dream of the Theory of Everything; they are tired of dealing with that swarm of cloying particles. That's not elegant! In science, as in art, beauty lies in brevity and simplicity, even if there is always a secret complexity hidden between the folds. Yes, I will devote the best of my days to the search for the mother fragrance, and when I find it, I will bottle it in a small jar that will be a discreet gem, of course, and I will place it at my wife's feet, I promise. The rest will be (...)
-		- \cite{londono2019fraganciamadre} [fragment translated by the authors].
-	\end{quote}
+	%From the category Mathematics and statistics:
+	%\begin{quote}
+	%	(...) science aspires to economic models, to reducing everything to a small theoretical body from which its basic corollaries can be deduced directly. In mathematics, for example, a short, arithmetic proof is more beautiful than a longer one that must resort to calculation to prove the same thing. All geometries are developed from a handful of elementary postulates. Physicists dream of the Theory of Everything; they are tired of dealing with that swarm of cloying particles. That's not elegant! In science, as in art, beauty lies in brevity and simplicity, even if there is always a secret complexity hidden between the folds. Yes, I will devote the best of my days to the search for the mother fragrance, and when I find it, I will bottle it in a small jar that will be a discreet gem, of course, and I will place it at my wife's feet, I promise. The rest will be (...)
+	%	- \cite{londono2019fraganciamadre} [fragment translated by the authors].
+	%\end{quote}
 	
 	
 \subsection{Descriptive and Exploratory Analyses}
@@ -838,20 +842,17 @@ Overall, these results suggest that, in Colombian opinion columns, science is pr
 
 	
 
-	\section{Limitations and ethical considerations}
-	Cobertura mediática, sesgos de autoría/medio, ambigüedad semántica, cumplimiento de TOS/licencias, privacidad y reproducibilidad.
+
+	\section*{Funding Statement}
 	
-	\section{Reproducibility and data}
-	Enlace a repositorio (GitHub/OSF/Zenodo), scripts, versión de paquetes y \emph{conteiner} (\texttt{Dockerfile}) si aplica. 
-	Describe estructura del repo y cómo reproducir figuras/tablas.
-	
+	12740112024	Convocatoria proyectos internos 2024 a iniciar en 2025	 Project: \textit{Arte, ciencia y tecnología en la esfera pública: el aporte de las Humanidades Digitales al análisis de los discursos en la esfera pública en Colombia} (translated by author as Art, science, and technology in the public sphere: the contribution of the Digital Humanities to the analysis of discourse in the public sphere in Colombia.)	Horacio Manrique Tisnes	20250116	En Ejecución	816816-UNIVERSIDAD EAFIT	INT
 	
 	\section*{Acknowledgments}
 
 	
 	% --- Bibliografía ---
 	%\bibliography{references}  % Crea un archivo references.bib con tus entradas
-	\printbibliography
+	\printbibliography[title={Works Cited}]
 	
 	% --- Apéndices (opcional) ---
 	%\appendix
