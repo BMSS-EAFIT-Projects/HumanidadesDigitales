@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  17 FEB 2026 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  18 FEB 2026 21:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1272,11 +1272,11 @@ Package logreq Info: Writing requests to 'articulo_revista_ingles.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29365 strings out of 469959
- 585355 string characters out of 5469834
+ 29363 strings out of 469959
+ 585335 string characters out of 5469834
  1495210 words of memory out of 5000000
  55424 multiletter control sequences out of 15000+600000
- 740317 words of font info for 264 fonts, out of 8000000 for 9000
+ 740234 words of font info for 263 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,80p,2096b,5050s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -1298,7 +1298,7 @@ rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/User
 s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/User
 s/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on articulo_revista_ingles.pdf (24 pages, 6142284 bytes).
+Output written on articulo_revista_ingles.pdf (24 pages, 6142374 bytes).
 PDF statistics:
  473 PDF objects out of 1000 (max. 8388607)
  99 named destinations out of 1000 (max. 500000)

@@ -1,18 +1,19 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
-[1] Config.pm:311> INFO - Logfile is 'articulo_revista_ingles.blg'
-[387] biber-MSWIN64:340> INFO - === 
-[534] Biber.pm:420> INFO - Reading 'articulo_revista_ingles.bcf'
-[975] Biber.pm:994> INFO - Found 30 citekeys in bib section 0
-[1044] Biber.pm:4463> INFO - Processing section 0
-[1084] Biber.pm:4654> INFO - Looking for bibtex file 'references.bib' for section 0
-[1295] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1462] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bi[243[2872] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2872] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2872] Biber.pm:4283> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
-[3241] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[3241] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[3241] Biber.pm:4283> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
-[3442] bbl.pm:676> INFO - Writing 'articulo_revista_ingles.bbl' with encoding 'UTF-[377[4188] bbl.pm:779> INFO - Output to articulo_revista_ingles.bbl
-[4189] Biber.pm:131> WARN - legacy month field 'Dec' in entry 'Tyagi_text' is not an integer - this will probably not sort properly.
-[4189] Biber.pm:133> INFO - WARNINGS: 1
-
+[0] Config.pm:311> INFO - Logfile is 'articulo_revista_ingles.blg'
+[101] biber-MSWIN64:340> INFO - === 
+[143] Biber.pm:420> INFO - Reading 'articulo_revista_ingles.bcf'
+[255] Biber.pm:994> INFO - Found 30 citekeys in bib section 0
+[272] Biber.pm:4463> INFO - Processing section 0
+[284] Biber.pm:4654> INFO - Looking for bibtex file 'references.bib' for section 0
+[373] bibtex.pm:1713> INFO - LaTeX decoding ...
+[442] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[767] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[767] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[767] Biber.pm:4283> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[767] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[864] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[864] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[864] Biber.pm:4283> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[864] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[916] bbl.pm:676> INFO - Writing 'articulo_revista_ingles.bbl' with encoding 'UTF-8'
+[1232] bbl.pm:779> INFO - Output to articulo_revista_ingles.bbl

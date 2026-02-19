@@ -2001,7 +2001,7 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://vocabularies.unesco.org/browser/thesaurus/es}}
       \field{note}{Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura}
-      \field{title}{Tesauro de la UNESCO}
+      \field{title}{{Tesauro de la UNESCO}}
       \field{year}{1977}
     \endentry
     \entry{vera2025embeddinggemmapowerfullightweighttext}{misc}{}{}
@@ -4624,7 +4624,7 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://vocabularies.unesco.org/browser/thesaurus/es}}
       \field{note}{Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura}
-      \field{title}{Tesauro de la UNESCO}
+      \field{title}{{Tesauro de la UNESCO}}
       \field{year}{1977}
     \endentry
     \entry{vera2025embeddinggemmapowerfullightweighttext}{misc}{}{}
