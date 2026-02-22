@@ -35,14 +35,9 @@
 \usepackage{subcaption}
 
 % --- Bibliografía con biblatex (MLA) ---
-\usepackage{mla}
-\usepackage[backend=biber,
-style=mla,
-showmedium=false,
-autocite=inline]{biblatex}
-
+\usepackage[style=mla,backend=biber]{biblatex}
 \addbibresource{references.bib}
-\ExecuteBibliographyOptions{citetracker=true}
+
 
 
 % --- Comandos útiles ---
@@ -102,7 +97,7 @@ autocite=inline]{biblatex}
 	
 	\section{Methodology}
 	
-	To address the proposed research question, text mining and natural language processing (NLP) methods were employed. The methodology was structured into three main stages. First, references to science were identified within the opinion columns in order to construct a subcorpus. Second, algorithms were applied to analyze authorship, actors, topics, and vocabulary in both the subcorpus and the full corpus, enabling comparative analysis. Finally, the extracted elements were interpreted in light of national events occurring during the publication periods of the opinion columns, and the affiliations of both authors and referenced actors were identified to enrich the analysis. The overall procedure is summarized in the flowchart presented in Figure \ref{fig:diagramaflujo} and is described in detail in the following section. All analyses were conducted using Python 3.12.7 (\cite{python3127}), available at \url{https://www.python.org/downloads}.
+	To address the proposed research question, text mining and natural language processing (NLP) methods were employed. The methodology was structured into three main stages. First, references to science were identified within the opinion columns in order to construct a subcorpus. Second, algorithms were applied to analyze authorship, actors, topics, and vocabulary in both the subcorpus and the full corpus, enabling comparative analysis. Finally, the extracted elements were interpreted in light of national events occurring during the publication periods of the opinion columns, and the affiliations of both authors and referenced actors were identified to enrich the analysis. The overall procedure is summarized in the flowchart presented in Figure \ref{fig:diagramaflujo} and is described in detail in the following section. All analyses were conducted using Python 3.12.7 (\cite{python2023}) \footnote{Available at \url{https://www.python.org/downloads}}. 
 	
 	
 	\begin{figure}[H]
@@ -117,7 +112,7 @@ autocite=inline]{biblatex}
 	
 	\begin{table}[H]
 		\centering
-		\caption{Distribution of columns and authors by newspaper}
+		\caption{Distribution of columns and authors by newspaper.}
 		\label{tab:col_autores_periodico}
 		\footnotesize
 		\begin{tabular}{l c c c}
@@ -129,6 +124,7 @@ autocite=inline]{biblatex}
 			Semana & 1185 & 96  & 8.66\\
 			\hline
 		\end{tabular}
+		
 	\end{table}
 	
 	\subsection{Preprocessing}
@@ -235,7 +231,7 @@ Finally, semantic similarity between each corpus fragment and each Thesaurus sub
 	
 	\subsubsection{Cosine Similarity}
 	
-	Once both the corpus fragments and the UNESCO Thesaurus subcategories had been represented within the same vector space through embeddings, it was necessary to define a metric to quantify their semantic proximity. The measure used to evaluate similarity between the encoded texts was cosine similarity, one of the most widely employed metrics in information retrieval and natural language processing (\cite{Jurafsky2025}).
+	Once both the corpus fragments and the UNESCO Thesaurus subcategories had been represented within the same vector space through embeddings, it was necessary to define a metric to quantify their semantic proximity. The measure used to evaluate similarity between the encoded texts was cosine similarity, one of the most widely employed metrics in information retrieval and natural language processing (\cite{jurafsky2025}).
 	
 	In this context, let $\mathbf{u}$ denote the vector corresponding to a fragment (chunk) of an opinion column, and let $\mathbf{v}$ represent the vector associated with one of the 17 UNESCO Thesaurus categories for Science. The cosine similarity between these two vectors is defined as:
 		
@@ -317,15 +313,12 @@ With the selected threshold, the procedure was applied to the full set of $62{,}
 	
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/accuracy_umbral.png}
-		\caption{Accuracy by threshold.}
-		\label{fig:accuracy-umbral}
-	\end{subfigure}
-	\caption{Classification analysis results: distribution of scores and accuracy according to threshold.}
-	\label{fig:resultados-clasificacion}
+	\includegraphics[width=0.75\textwidth]{figures/accuracy_umbral.png}
+	\caption{Accuracy by threshold.}
+	\label{fig:accuracy-umbral}
 \end{figure}
+
+
 
 
 \subsection{Descriptive and Exploratory Analyses of the Text}
@@ -361,7 +354,7 @@ With the selected threshold, the procedure was applied to the full set of $62{,}
 	\boldsymbol{\phi}_k = \left( P(w_1 \mid k), P(w_2 \mid k), \dots, P(w_V \mid k) \right),
 	$$
 	
-	donde $P(w_v \mid k) \ge 0$ y
+	where $P(w_v \mid k) \ge 0$ y
 	
 	$$
 	\sum_{v=1}^{V} P(w_v \mid k) = 1.
@@ -405,7 +398,7 @@ At the document level, 4\,154 columns contain at least one effective mention of 
 	
 	{\footnotesize
 		\begin{longtable}{p{7cm}P{4cm}P{4cm}}
-			\caption{Number of fragments with mentions of science and percentage of the total by category} \label{tab:res_fragmentos_subcategoria}\\
+			\caption{Number of fragments with mentions of science and percentage of the total by category.} \label{tab:res_fragmentos_subcategoria}\\
 			\toprule
 			\textbf{Category} & \textbf{Number of fragments} & \textbf{Percentage of total} \\
 			\midrule
@@ -473,7 +466,7 @@ At the document level, 4\,154 columns contain at least one effective mention of 
 	
 	\begin{table}[H]
 		\centering
-		\caption{General descriptive statistics of the corpus}
+		\caption{General descriptive statistics of the corpus.}
 		\label{tab:estadisticos_generales}
 		\begin{tabular}{l c}
 			\hline
@@ -497,17 +490,17 @@ At the document level, 4\,154 columns contain at least one effective mention of 
 		\begin{subfigure}{0.48\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/nube_general.png}
-			\caption{Word cloud of the general corpus}
+			\caption{Word cloud of the general corpus.}
 			\label{fig:nube_general}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{0.48\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/nube_ciencia.png}
-			\caption{Word cloud, fragments tagged as science}
+			\caption{Word cloud, fragments tagged as science.}
 			\label{fig:nube_ciencia}
 		\end{subfigure}
-		\caption{Word clouds}
+		\caption{Word clouds to compare predominant vocabulary in the general corpus versus the subcorpus.}
 		%\label{fig:resultados-clasificacion}
 	\end{figure}
 	
@@ -520,7 +513,7 @@ Figure~\ref{fig:dist_mensual_ciencia} shows, for each month in the analyzed peri
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.95\textwidth]{figures/porcentaje_mensual_ciencia_linea.png}
-		\caption{Monthly distribution of columns mentioning science, by percentage}
+		\caption{Monthly distribution of columns mentioning science, by percentage.}
 		\label{fig:dist_mensual_ciencia}
 	\end{figure}
 	
@@ -536,7 +529,7 @@ The ten most frequent entities by class (Person, Organization, and Location) are
 
 	\begin{table}[H]
 		\centering
-		\caption{Comparative frequency of characters in the general corpus vs. the scientific corpus}
+		\caption{Comparative frequency of characters in the general corpus vs. the scientific corpus.}
 		\label{tab:ents_per}
 		\footnotesize 
 		
@@ -565,7 +558,7 @@ The ten most frequent entities by class (Person, Organization, and Location) are
 	
 	\begin{table}[H]
 		\centering
-		\caption{Comparative frequency of organizations in the general corpus vs. the scientific corpus}
+		\caption{Comparative frequency of organizations in the general corpus vs. the scientific corpus.}
 		\label{tab:ents_org}
 		\footnotesize 
 		
@@ -594,7 +587,7 @@ The ten most frequent entities by class (Person, Organization, and Location) are
 	
 	\begin{table}[H]
 		\centering
-		\caption{Comparative frequency of geographic locations in the general corpus vs. the scientific corpus}
+		\caption{Comparative frequency of geographic locations in the general corpus vs. the scientific corpus.}
 		\label{tab:ents_loc}
 		\footnotesize 
 		\begin{tabular}{p{3cm}P{2.2cm}P{2.2cm}P{2.2cm}p{5cm}}
@@ -626,6 +619,7 @@ For each estimated model, the coherence metric \textit{c\_v} was calculated, whi
 
 \begin{table}[H]
 	\centering
+	\caption{Results of topic modeling for different values of the parameter \textit{num\_topics}.}
 	\begin{tabular}{ccccc}
 		\hline
 		\textbf{num\_topics} & \textbf{num\_topics\_final} & \textbf{coherence\_c\_v} & \textbf{\% outliers} \\
@@ -638,7 +632,6 @@ For each estimated model, the coherence metric \textit{c\_v} was calculated, whi
 		10   & 9  & 0.480771 & 0.0 \\
 		\hline
 	\end{tabular}
-	\caption{Results of topic modeling for different values of the parameter \textit{num\_topics}}
 	\label{tab:coherence_topics}
 \end{table}
 
@@ -650,6 +643,7 @@ Maintaining the 63-topic model, Table \ref{tab:bertopic_coherence_top} presents 
 \begin{table}[H]
 	\centering
 	\small
+	\caption{Top BERTopic topics with per-topic coherence ($c_v$), percentage of documents, and representative keywords.}
 	\begin{tabularx}{\textwidth}{c c c X}
 		\hline
 		\textbf{Topic} & \textbf{Coherence ($c_v$)} & \textbf{Percentage (\%)} & \textbf{Keywords} \\
@@ -666,7 +660,7 @@ Maintaining the 63-topic model, Table \ref{tab:bertopic_coherence_top} presents 
 		6  & 0.8998 & 1.61  & cuisine, food, eat, restaurant, dish, flavors, rice, dishes, flavor, home \\
 		\hline
 	\end{tabularx}
-	\caption{Top BERTopic topics with per-topic coherence ($c_v$), percentage of documents, and representative keywords}
+	
 	\label{tab:bertopic_coherence_top}
 \end{table}
 		
@@ -674,6 +668,7 @@ Maintaining the 63-topic model, Table \ref{tab:bertopic_coherence_top} presents 
 		
 		\begin{table}[H]
 			\centering
+			\caption{BERTopic results for different values of \texttt{num\_topics}, specifically science.}
 			\begin{tabular}{c c c c}
 				\hline
 				\textbf{num\_topics} & \textbf{num\_topics\_final} & \textbf{Coherence $c_v$} & \textbf{\% Outliers} \\
@@ -686,7 +681,6 @@ Maintaining the 63-topic model, Table \ref{tab:bertopic_coherence_top} presents 
 				10   & 9  & 0.622583 & 0.0 \\
 				\hline
 			\end{tabular}
-			\caption{BERTopic results for different values of \texttt{num\_topics}, specifically science}
 			\label{tab:bertopic_nr_topics_ciencia}
 		\end{table}
 		
@@ -695,6 +689,7 @@ Maintaining the 63-topic model, Table \ref{tab:bertopic_coherence_top} presents 
 		\begin{table}[H]
 			\centering
 			\small
+			\caption{Top BERTopic topics with per-topic coherence ($c_v$), percentage of documents, and representative keywords, specific to mentions of science.}
 			\begin{tabularx}{\textwidth}{c c c X}
 				\hline
 				\textbf{Topic} & \textbf{Coherence ($c_v$)} & \textbf{Percentage (\%)} & \textbf{Keywords} \\
@@ -711,7 +706,7 @@ Maintaining the 63-topic model, Table \ref{tab:bertopic_coherence_top} presents 
 				10 & 0.724657 & 1.83  & women, men, woman, gender, feminine, violence, people, life, female, sex \\
 				\hline
 			\end{tabularx}
-			\caption{Top BERTopic topics with per-topic coherence ($c_v$), percentage of documents, and representative keywords, specific to mentions of science}
+		
 			\label{tab:topics_ciencia}
 		\end{table}
 		
@@ -727,6 +722,7 @@ Given that 11.6\% of the fragments in the corpus were classified as scientific m
 
 \begin{table}[H]
 	\centering
+	\caption{Frequency and proportion of verbs in the science subcorpus.}
 	\begin{tabular}{lrrr}
 		\toprule
 		\textbf{Verb} & \textbf{Total frequency} & \textbf{Science frequency} & \textbf{Science proportion} \\
@@ -750,13 +746,14 @@ Given that 11.6\% of the fragments in the corpus were classified as scientific m
 		\textit{talar} (`log')               & 39  & 17 & 0.44 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Frequency and proportion of verbs in the science subcorpus}
+	
 	\label{tab:verbos_ciencia}
 \end{table}
 
 
 \begin{table}[H]
 	\centering
+	\caption{Frequency and proportion of adjectives in the science subcorpus.}
 	\begin{tabular}{lrrr}
 		\toprule
 		\textbf{Adjective} & \textbf{Total frequency} & \textbf{Science frequency} & \textbf{Science proportion} \\
@@ -778,12 +775,13 @@ Given that 11.6\% of the fragments in the corpus were classified as scientific m
 		\textit{animal} (`animal')              & 188  & 84  & 0.45 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Frequency and proportion of adjectives in the science subcorpus}
+	
 	\label{tab:adjetivos_ciencia}
 \end{table}
 
 \begin{table}[H]
 	\centering
+	\caption{Frequency and proportion of nouns in the science subcorpus.}
 	\begin{tabular}{lrrr}
 		\toprule
 		\textbf{Noun} & \textbf{Total frequency} & \textbf{Science frequency} & \textbf{Science proportion} \\
@@ -805,7 +803,7 @@ Given that 11.6\% of the fragments in the corpus were classified as scientific m
 		\textit{área} (`area')               & 1037 & 314 & 0.30 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Frequency and proportion of nouns in the science subcorpus}
+	
 	\label{tab:sustantivos_ciencia}
 \end{table}
 
@@ -846,6 +844,8 @@ Overall, these results suggest that, in Colombian opinion columns, science is pr
 	\section*{Funding Statement}
 	
 	12740112024	Convocatoria proyectos internos 2024 a iniciar en 2025	 Project: \textit{Arte, ciencia y tecnología en la esfera pública: el aporte de las Humanidades Digitales al análisis de los discursos en la esfera pública en Colombia} (translated by author as Art, science, and technology in the public sphere: the contribution of the Digital Humanities to the analysis of discourse in the public sphere in Colombia.)	Horacio Manrique Tisnes	20250116	En Ejecución	816816-UNIVERSIDAD EAFIT	INT
+	
+	\section*{Data Availability Statement}
 	
 	\section*{Acknowledgments}
 

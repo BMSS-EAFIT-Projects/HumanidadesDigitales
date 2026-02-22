@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  19 FEB 2026 11:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  20 FEB 2026 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -541,69 +541,8 @@ Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count333
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count334
-) (mla.sty
-Package: mla 
-
-MLA Package - by Ryan Aycock
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
-Package: color 2024/06/23 v1.3e Standard LaTeX Color (DPC)
-
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 149.
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
-)
-
-! LaTeX Error: Option clash for package graphicx.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.69     \pdfpagewidth
-                      =\paperwidth
-The package graphicx has already been loaded with options:
-  []
-There has now been an attempt to load it with options
-  [pdftex]
-Adding the global options:
-  ,pdftex
-to your \documentclass declaration may fix this.
-Try typing  <return>  to proceed.
-
-
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/generic/thumbpdf\thumbpdf.sty
-Package: thumbpdf 2018/09/07 v3.17 Inclusion of thumbnails (HO)
-
-Package thumbpdf Warning: Thumbnail data file `articulo_revista_ingles.tpt' not
- found.
-
-) (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
-Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
-)
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
-Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
-
-\f@nch@headwidth=\skip62
-\f@nch@offset@elh=\skip63
-\f@nch@offset@erh=\skip64
-\f@nch@offset@olh=\skip65
-\f@nch@offset@orh=\skip66
-\f@nch@offset@elf=\skip67
-\f@nch@offset@erf=\skip68
-\f@nch@offset@olf=\skip69
-\f@nch@offset@orf=\skip70
-\f@nch@height=\skip71
-\f@nch@footalignment=\skip72
-\f@nch@widthL=\skip73
-\f@nch@widthC=\skip74
-\f@nch@widthR=\skip75
-\@temptokenb=\toks34
-)) (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.st
-y
+) (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
-
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count335
@@ -657,14 +596,14 @@ Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 \blx@sectionciteorderinternal@0=\count376
 \blx@entrysetcounter=\count377
 \blx@biblioinstance=\count378
-\labelnumberwidth=\skip76
-\labelalphawidth=\skip77
-\biblabelsep=\skip78
-\bibitemsep=\skip79
-\bibnamesep=\skip80
-\bibinitsep=\skip81
-\bibparsep=\skip82
-\bibhang=\skip83
+\labelnumberwidth=\skip62
+\labelalphawidth=\skip63
+\biblabelsep=\skip64
+\bibitemsep=\skip65
+\bibnamesep=\skip66
+\bibinitsep=\skip67
+\bibparsep=\skip68
+\bibhang=\skip69
 \blx@bcfin=\read2
 \blx@bcfout=\write3
 \blx@langwohyphens=\language79
@@ -753,20 +692,20 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@savedoriglanguage=\count447
 \c@pageref=\count448
 \c@savedpageref=\count449
-\shorthandwidth=\skip84
-\shortjournalwidth=\skip85
-\shortserieswidth=\skip86
-\shorttitlewidth=\skip87
-\shortauthorwidth=\skip88
-\shorteditorwidth=\skip89
-\locallabelnumberwidth=\skip90
-\locallabelalphawidth=\skip91
-\localshorthandwidth=\skip92
-\localshortjournalwidth=\skip93
-\localshortserieswidth=\skip94
-\localshorttitlewidth=\skip95
-\localshortauthorwidth=\skip96
-\localshorteditorwidth=\skip97
+\shorthandwidth=\skip70
+\shortjournalwidth=\skip71
+\shortserieswidth=\skip72
+\shorttitlewidth=\skip73
+\shortauthorwidth=\skip74
+\shorteditorwidth=\skip75
+\locallabelnumberwidth=\skip76
+\locallabelalphawidth=\skip77
+\localshorthandwidth=\skip78
+\localshortjournalwidth=\skip79
+\localshortserieswidth=\skip80
+\localshorttitlewidth=\skip81
+\localshortauthorwidth=\skip82
+\localshorteditorwidth=\skip83
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -841,20 +780,9 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
 File: biblatex.cfg 
 )
-
-! Package keyval Error: showmedium undefined.
-
-See the keyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.16297 \blx@processoptions
-                           
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
+
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2025-03-26 L3 programming layer (loader) 
 
@@ -879,41 +807,50 @@ Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 77.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 77
-.
+h' as default language. on input line 72.
 
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2024/06/23 v1.3e Standard LaTeX Color (DPC)
+
+(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 72
+.
+ (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 (articulo_revista_ingles.aux)
 \openout1 = `articulo_revista_ingles.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Info: Redefining \microtypecontext on input line 77.
-Package microtype Info: Applying patch `item' on input line 77.
-Package microtype Info: Applying patch `toc' on input line 77.
-Package microtype Info: Applying patch `eqnum' on input line 77.
-Package microtype Info: Applying patch `footnote' on input line 77.
-Package microtype Info: Applying patch `verbatim' on input line 77.
-LaTeX Info: Redefining \microtypesetup on input line 77.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Info: Redefining \microtypecontext on input line 72.
+Package microtype Info: Applying patch `item' on input line 72.
+Package microtype Info: Applying patch `toc' on input line 72.
+Package microtype Info: Applying patch `eqnum' on input line 72.
+Package microtype Info: Applying patch `footnote' on input line 72.
+Package microtype Info: Applying patch `verbatim' on input line 72.
+LaTeX Info: Redefining \microtypesetup on input line 72.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -925,8 +862,9 @@ Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg
-File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
 )
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -938,23 +876,23 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 * modes: 
 * h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
 * v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=469.75499pt
-* \textheight=650.43pt
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
 * \oddsidemargin=0.0pt
 * \evensidemargin=0.0pt
-* \topmargin=36.135pt
+* \topmargin=-37.0pt
 * \headheight=12.0pt
-* \headsep=18.0pt
+* \headsep=25.0pt
 * \topskip=11.0pt
-* \footskip=40.0pt
-* \marginparwidth=0.0pt
-* \marginparsep=0.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
-* \voffset=-72.26999pt
+* \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
 * \@twosidefalse
@@ -971,12 +909,12 @@ ii
 \scratchbox=\box73
 \nofMPsegments=\count464
 \nofMParguments=\count465
-\everyMPshowfont=\toks35
+\everyMPshowfont=\toks34
 \MPscratchCnt=\count466
 \MPscratchDim=\dimen262
 \MPnumerator=\count467
 \makeMPintoPDFobject=\count468
-\everyMPtoPDFconversion=\toks36
+\everyMPtoPDFconversion=\toks35
 )
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -994,8 +932,8 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 77.
-Package hyperref Info: Link coloring ON on input line 77.
+or `english'. on input line 72.
+Package hyperref Info: Link coloring ON on input line 72.
  (articulo_revista_ingles.out)
 (articulo_revista_ingles.out)
 \@outlinefile=\write4
@@ -1031,43 +969,39 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'articulo_revista_ingles.bbl' found.
  (articulo_revista_ingles.bbl)
-Package biblatex Info: Reference section=0 on input line 77.
-Package biblatex Info: Reference segment=0 on input line 77.
+Package biblatex Info: Reference section=0 on input line 72.
+Package biblatex Info: Reference segment=0 on input line 72.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-9.
+4.
 
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
-(RS)
-)
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-9.
+4.
 
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-79.
+74.
 
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-79.
+74.
 
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 79.
+(Font)              <12> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 79.
+(Font)              <8> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 79.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
+(Font)              <6> on input line 74.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 74.
 
 
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1076,7 +1010,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
 
 
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1085,14 +1019,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 79
-.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+4.
 
-(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+(C:\Users\karen\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `pcr' (encoding: T1).
+(microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
@@ -1100,315 +1034,195 @@ Package microtype Info: Loading generic protrusion settings for font family
 [1
 
 {C:/Users/karen/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/kare
-n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-
-LaTeX Warning: Citation 'Chakravartty2022' on page 2 undefined on input line 90
-.
-
-
-LaTeX Warning: Citation 'Mede2022' on page 2 undefined on input line 90.
-
-
-LaTeX Warning: Citation 'Cologna2025' on page 2 undefined on input line 92.
-
-
-LaTeX Warning: Citation 'Sturgis2021' on page 2 undefined on input line 92.
-
-
-LaTeX Warning: Citation 'Mede2022' on page 2 undefined on input line 92.
-
-
-LaTeX Warning: Citation 'Daza_Caicedo2014' on page 2 undefined on input line 94
-.
-
-
-LaTeX Warning: Citation 'Daza_Caicedo2014' on page 2 undefined on input line 94
-.
-
-
-LaTeX Warning: Citation 'Coppock2018' on page 2 undefined on input line 96.
-
-
-LaTeX Warning: Citation 'Syfert2025' on page 2 undefined on input line 96.
-
-
-
-[2]
-
-LaTeX Warning: Citation 'CaroLopera2020' on page 3 undefined on input line 98.
-
-
-LaTeX Warning: Citation 'python3127' on page 3 undefined on input line 105.
-
+n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 105.
-
-
-[3]
-<figures/diagrama_paper_ciencia.png, id=101, 985.6825pt x 181.67876pt>
+(Font)              <10.95> on input line 100.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 100.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 100.
+<figures/diagrama_paper_ciencia.png, id=119, 985.6825pt x 181.67876pt>
 File: figures/diagrama_paper_ciencia.png Graphic file (type png)
 <use figures/diagrama_paper_ciencia.png>
 Package pdftex.def Info: figures/diagrama_paper_ciencia.png  used on input line
- 110.
-(pdftex.def)             Requested size: 469.75499pt x 86.58383pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 123.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 123.
+ 105.
+(pdftex.def)             Requested size: 452.9679pt x 83.49007pt.
 
 
-[4 <./figures/diagrama_paper_ciencia.png>]
+[2 <./figures/diagrama_paper_ciencia.png>]
 
-LaTeX Warning: Citation 'Chai2022' on page 5 undefined on input line 136.
-
-
-LaTeX Warning: Citation 'Tyagi_text' on page 5 undefined on input line 138.
+Package hyperref Warning: Suppressing empty link on input line 137.
 
 
-LaTeX Warning: Citation 'Siino2024' on page 5 undefined on input line 141.
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
+[]|\T1/lmr/m/n/9 (+20) Science and re-search
+ []
 
 
-Package hyperref Warning: Suppressing empty link on input line 141.
+Underfull \hbox (badness 1389) in paragraph at lines 200--200
+[]|\T1/lmr/m/n/9 (+20) Environmental sci-ences
+ []
 
 
+
+[4]
 
 [5]
 
-LaTeX Warning: Citation 'Orellana2018' on page 6 undefined on input line 144.
+[6{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 
+[7{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
+c}{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
+c}{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
+c}]
 
-LaTeX Warning: Citation 'qi2020stanza' on page 6 undefined on input line 144.
+LaTeX Warning: Reference `fig:resultados-clasificacion' on page 8 undefined on 
+input line 302.
 
+<figures/accuracy_umbral.png, id=212, 578.16pt x 361.35pt>
+File: figures/accuracy_umbral.png Graphic file (type png)
+<use figures/accuracy_umbral.png>
+Package pdftex.def Info: figures/accuracy_umbral.png  used on input line 316.
+(pdftex.def)             Requested size: 339.72592pt x 212.329pt.
 
-LaTeX Warning: Citation 'Wei2022' on page 6 undefined on input line 150.
-
-
-
-[6]
-
-LaTeX Warning: Citation 'unesco_thesaurus_1977' on page 7 undefined on input li
-ne 161.
-
-
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 206--206
-[]|\T1/ptm/m/n/9 (+20) Pollution, dis-as-ters and
- []
 
 [8]
 
-LaTeX Warning: Citation 'Hosna2022' on page 9 undefined on input line 223.
-
-
-
-[9]
-
-LaTeX Warning: Citation 'enevoldsen2025mmtebmassivemultilingualtext' on page 10
- undefined on input line 227.
-
-
-LaTeX Warning: Citation 'vera2025embeddinggemmapowerfullightweighttext' on page
- 10 undefined on input line 227.
-
-
+[9 <./figures/accuracy_umbral.png>]
 
 [10]
-
-LaTeX Warning: Citation 'Jurafsky2025' on page 11 undefined on input line 238.
-
-
-
-[11{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+Overfull \hbox (9.82343pt too wide) in alignment at lines 400--405
+ [] [] [] 
+ []
 
 
-[12{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
-nc}{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
-nc}]
+Overfull \hbox (9.82343pt too wide) in alignment at lines 405--411
+ [] [] [] 
+ []
 
-[13{C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
-nc}]
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 411--414
+ [] [] [] 
+ []
+
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 414--417
+ [] [] [] 
+ []
+
+
+Overfull \hbox (9.82343pt too wide) in alignment at lines 417--438
+ [] [] [] 
+ []
+
+[11]
+<figures/nube_general.png, id=261, 722.7pt x 578.16pt>
+File: figures/nube_general.png Graphic file (type png)
+<use figures/nube_general.png>
+Package pdftex.def Info: figures/nube_general.png  used on input line 492.
+(pdftex.def)             Requested size: 217.42265pt x 173.93454pt.
+<figures/nube_ciencia.png, id=262, 722.7pt x 578.16pt>
+File: figures/nube_ciencia.png Graphic file (type png)
+<use figures/nube_ciencia.png>
+Package pdftex.def Info: figures/nube_ciencia.png  used on input line 499.
+(pdftex.def)             Requested size: 217.42265pt x 173.93454pt.
+
+
+[12 <./figures/nube_general.png> <./figures/nube_ciencia.png>]
+<figures/porcentaje_mensual_ciencia_linea.png, id=273, 1004.7939pt x 427.1157pt
+>
+File: figures/porcentaje_mensual_ciencia_linea.png Graphic file (type png)
+<use figures/porcentaje_mensual_ciencia_linea.png>
+Package pdftex.def Info: figures/porcentaje_mensual_ciencia_linea.png  used on 
+input line 515.
+(pdftex.def)             Requested size: 430.31812pt x 182.91972pt.
+
+Overfull \hbox (22.44203pt too wide) in paragraph at lines 536--557
+ [][] 
+ []
+
+
+Underfull \hbox (badness 3838) in paragraph at lines 573--574
+[]|\T1/lmr/m/n/9 (+20) Organisation for Eco-nomic Co-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 575--575
+[]|\T1/lmr/m/n/9 (+20) Pontificia Uni-ver-si-
+ []
+
+
+Underfull \hbox (badness 4084) in paragraph at lines 579--579
+[]|\T1/lmr/m/n/9 (+20) University of Mas-
+ []
+
+
+Overfull \hbox (22.44203pt too wide) in paragraph at lines 565--586
+ [][] 
+ []
+
+
+
+[13 <./figures/porcentaje_mensual_ciencia_linea.png>]
+Underfull \hbox (badness 2096) in paragraph at lines 606--607
+\T1/lmr/m/n/9 (+20) a high plateau in the East-ern
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 607--607
+[]|\T1/lmr/m/n/9 (+20) Parques Na-cionales
+ []
+
+
+Overfull \hbox (22.44203pt too wide) in paragraph at lines 593--612
+ [][] 
+ []
+
+
 
 [14]
-<figures/accuracy_umbral.png, id=167, 578.16pt x 361.35pt>
-File: figures/accuracy_umbral.png Graphic file (type png)
-<use figures/accuracy_umbral.png>
-Package pdftex.def Info: figures/accuracy_umbral.png  used on input line 322.
-(pdftex.def)             Requested size: 225.48038pt x 140.92041pt.
 
-
-[15 <./figures/accuracy_umbral.png>]
-
-LaTeX Warning: Citation 'Jehangir2023' on page 16 undefined on input line 345.
-
-
-LaTeX Warning: Citation 'Jehangir2023' on page 16 undefined on input line 345.
+[15]
+Underfull \hbox (badness 2744) in paragraph at lines 662--662
+[]|\T1/lmr/m/n/10 (+20) corruption, cor-rupt, pub-lic, ref-er-en-dum, anti-
+ []
 
 
 
 [16]
 
-LaTeX Warning: Citation 'tedeschi-etal-2021-wikineural-combined' on page 17 und
-efined on input line 349.
+Package hyperref Warning: Suppressing empty link on input line 719.
 
 
-Overfull \hbox (5.59244pt too wide) in paragraph at lines 349--350
-[]\T1/ptm/m/n/10.95 (-20) The model used was \T1/ptm/m/it/10.95 (-20) Babelscap
-e/wikineural-multilingual-ner \T1/ptm/m/n/10.95 (-20) ([]),
+Overfull \hbox (14.71768pt too wide) in paragraph at lines 726--749
+ [][] 
  []
-
-
-LaTeX Warning: Citation 'Abdelrazek2023' on page 17 undefined on input line 356
-.
 
 
 
 [17]
+Overfull \hbox (16.42865pt too wide) in paragraph at lines 757--778
+ [][] 
+ []
 
-LaTeX Warning: Citation 'Grootendorst2022' on page 18 undefined on input line 3
-72.
 
-
-LaTeX Warning: Citation 'Rder2015' on page 18 undefined on input line 378.
+Overfull \hbox (12.78394pt too wide) in paragraph at lines 785--806
+ [][] 
+ []
 
 
 
 [18]
 
-LaTeX Warning: Citation 'he2020surveyrecentadvancessequence' on page 19 undefin
-ed on input line 383.
+[19]
 
-
-LaTeX Warning: Citation 'Chiche2022' on page 19 undefined on input line 383.
-
-
-LaTeX Warning: Citation 'qi2020stanza' on page 19 undefined on input line 385.
-
-
-
-[19] [20]
-<figures/nube_general.png, id=198, 722.7pt x 578.16pt>
-File: figures/nube_general.png Graphic file (type png)
-<use figures/nube_general.png>
-Package pdftex.def Info: figures/nube_general.png  used on input line 499.
-(pdftex.def)             Requested size: 225.48038pt x 180.38342pt.
-<figures/nube_ciencia.png, id=199, 722.7pt x 578.16pt>
-File: figures/nube_ciencia.png Graphic file (type png)
-<use figures/nube_ciencia.png>
-Package pdftex.def Info: figures/nube_ciencia.png  used on input line 506.
-(pdftex.def)             Requested size: 225.48038pt x 180.38342pt.
-
+[20]
 
 [21]
-<figures/porcentaje_mensual_ciencia_linea.png, id=206, 1004.7939pt x 427.1157pt
->
-File: figures/porcentaje_mensual_ciencia_linea.png Graphic file (type png)
-<use figures/porcentaje_mensual_ciencia_linea.png>
-Package pdftex.def Info: figures/porcentaje_mensual_ciencia_linea.png  used on 
-input line 522.
-(pdftex.def)             Requested size: 446.2658pt x 189.69766pt.
 
-
-[22 <./figures/nube_general.png> <./figures/nube_ciencia.png> <./figures/porcen
-taje_mensual_ciencia_linea.png>]
-Underfull \hbox (badness 1748) in paragraph at lines 560--561
-[]|\T1/ptm/m/n/9 (+20) American as-tronomer, as-tro-physi-cist
- []
-
-
-Overfull \hbox (5.65494pt too wide) in paragraph at lines 543--564
- [][] 
- []
-
-
-
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 580--581
-[]|\T1/ptm/m/n/9 (+20) Organisation for Eco-nomic Co-
- []
-
-
-Underfull \hbox (badness 1596) in paragraph at lines 582--582
-[]|\T1/ptm/m/n/9 (+20) Pontificia Uni-ver-si-dad
- []
-
-
-Underfull \hbox (badness 6396) in paragraph at lines 585--585
-[]|\T1/ptm/m/n/9 (+20) Ministry of En-vi-ron-
- []
-
-
-Underfull \hbox (badness 1675) in paragraph at lines 585--585
-\T1/ptm/m/n/9 (+20) ment and Sus-tain-able
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 586--586
-[]|\T1/ptm/m/n/9 (+20) University of Mas-
- []
-
-
-Overfull \hbox (5.65494pt too wide) in paragraph at lines 572--593
- [][] 
- []
-
-
-
-[24]
-Overfull \vbox (23.35452pt too high) has occurred while \output is active []
-
-
-
-[25]
-Underfull \hbox (badness 4595) in paragraph at lines 609--610
-[]|\T1/ptm/m/n/9 (+20) Hydroelectric project in An-tio-quia,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 611--612
-[]|\T1/ptm/m/n/9 (+20) Natural re-gion of Colom-bia and
- []
-
-
-Overfull \hbox (5.65494pt too wide) in paragraph at lines 600--619
- [][] 
- []
-
-
-
-[26]
-
-[27]
-
-[28]
-
-[29]
-
-[30]
-
-[31]
-
-Package hyperref Warning: Suppressing empty link on input line 724.
-
-
-
-[32]
-
-[33]
-
-[34]
-
-[35]
-
-[36]
-
-[37]
-
-LaTeX Warning: Empty bibliography on input line 855.
-
-
-
-[38] (articulo_revista_ingles.aux)
+[22] (articulo_revista_ingles.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
@@ -1420,42 +1234,41 @@ LaTeX Warning: There were undefined references.
 Package rerunfilecheck Info: File `articulo_revista_ingles.out' has not changed
 .
 (rerunfilecheck)             Checksum: F69B3006A48E6ACFB8CCDB4BEFDD93AE;3577.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                articulo_revista_ingles
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'articulo_revista_ingles.run.xml'.
 \openout1 = `articulo_revista_ingles.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29495 strings out of 469959
- 585575 string characters out of 5469834
- 1450610 words of memory out of 5000000
- 55514 multiletter control sequences out of 15000+600000
- 734041 words of font info for 340 fonts, out of 8000000 for 9000
+ 29159 strings out of 469959
+ 583370 string characters out of 5469834
+ 1451012 words of memory out of 5000000
+ 55198 multiletter control sequences out of 15000+600000
+ 740104 words of font info for 262 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,80p,2096b,2647s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,80p,2091b,2647s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
-b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
-b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb
-><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb>
-<C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb
-><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
-<C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C
-:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C
-:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:
-/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
-r/ucrr8a.pfb><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmb8a.pfb><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmr8a.pfb><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmri8a.pfb>
-Output written on articulo_revista_ingles.pdf (38 pages, 5942398 bytes).
+b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
+b><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb
+><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb
+><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb
+><C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb>
+<C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><
+C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb>
+<C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><
+C:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C
+:/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:
+/Users/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/U
+sers/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Use
+rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users
+/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users
+/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users
+/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/
+karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/
+karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.
+pfb>
+Output written on articulo_revista_ingles.pdf (22 pages, 6150162 bytes).
 PDF statistics:
- 394 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
- 60090 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 490 PDF objects out of 1000 (max. 8388607)
+ 126 named destinations out of 1000 (max. 500000)
+ 60602 words of extra memory for PDF output out of 61914 (max. 10000000)
 
