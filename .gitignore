@@ -3,3 +3,5 @@ reports/ideas PAPERS_08Oct.zip
 models/embedder_model.pkl
 data/processed/chunk_embeddings.npy
 data/processed/chunk_embeddings.npy
+data/processed/chunk_embeddings_lit.npy
+data/processed/obras_embeddings.npy
