@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  20 FEB 2026 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.4.30)  23 FEB 2026 08:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1222,7 +1222,9 @@ Overfull \hbox (12.78394pt too wide) in paragraph at lines 785--806
 
 [21]
 
-[22] (articulo_revista_ingles.aux)
+[22]
+
+[23] (articulo_revista_ingles.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
@@ -1239,8 +1241,8 @@ Package logreq Info: Writing requests to 'articulo_revista_ingles.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29159 strings out of 469959
- 583370 string characters out of 5469834
+ 29160 strings out of 469959
+ 583377 string characters out of 5469834
  1451012 words of memory out of 5000000
  55198 multiletter control sequences out of 15000+600000
  740104 words of font info for 262 fonts, out of 8000000 for 9000
@@ -1266,9 +1268,9 @@ rs/karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users
 karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/
 karen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.
 pfb>
-Output written on articulo_revista_ingles.pdf (22 pages, 6150162 bytes).
+Output written on articulo_revista_ingles.pdf (23 pages, 6152059 bytes).
 PDF statistics:
- 490 PDF objects out of 1000 (max. 8388607)
- 126 named destinations out of 1000 (max. 500000)
+ 495 PDF objects out of 1000 (max. 8388607)
+ 127 named destinations out of 1000 (max. 500000)
  60602 words of extra memory for PDF output out of 61914 (max. 10000000)
 
